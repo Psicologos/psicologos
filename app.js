@@ -28,6 +28,11 @@ app.use(expressLayouts);
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
+const index = require('./routes/index');
+const authRoutes = require('./routes/auth');
+
+app.use('/', index);
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -36,12 +41,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
+// app.use('/users', users);
+app.use('/', authRoutes);
+
 app.use(session({
   secret: "psicologos"
 }));
 
-const index = require('./routes/index');
-app.use('/', index);
+
 
 passport.serializeUser((user, cb) => {
   cb(null, user._id);
