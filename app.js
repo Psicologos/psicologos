@@ -11,7 +11,6 @@ const MongoStore   = require('connect-mongo')(session);
 const passport   = require('passport');
 const LocalStrategy = require("passport-local").Strategy;
 
-
 mongoose.connect('mongodb://localhost/psicologos');
 
 const app = express();
