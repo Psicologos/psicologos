@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  username: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true
@@ -73,7 +77,8 @@ const userSchema = new Schema({
   }, //psicólogos y clínicas asociados a los pacientes
   role: {
     type: String,
-    enum: ['admin', 'psychologist', 'clinic', 'patient'],
+    enum: ['admin', 'psychologist', 'clinic', 'patient']
+    // required: true
   },
 }, {
   timestamps: {

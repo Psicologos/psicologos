@@ -10,6 +10,9 @@ const mongoose     = require('mongoose');
 const MongoStore   = require('connect-mongo')(session);
 const passport   = require('passport');
 const LocalStrategy = require("passport-local").Strategy;
+const flash = require("connect-flash");
+const User = require('./models/User');
+const bcrypt = require("bcrypt");
 
 mongoose.connect('mongodb://localhost/psicologos');
 
@@ -26,12 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+// app.locals.title = 'Express - Generated with IronGenerator';
 
-const index = require('./routes/index');
-const authRoutes = require('./routes/auth');
-
-app.use('/', index);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,15 +39,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-// app.use('/users', users);
-app.use('/', authRoutes);
-
 app.use(session({
-  secret: "psicologos"
+  secret: "psicologos",
+  resave: true,
+  saveUninitialized: true
 }));
 
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 
 passport.serializeUser((user, cb) => {
@@ -78,8 +79,22 @@ passport.use(new LocalStrategy((username, password, next) => {
   });
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use((req,res,next) => {
+  res.locals.title = "Ironfunding";
+  res.locals.user = req.user;
+  next();
+});
+
+const index = require('./routes/index');
+const authRoutes = require('./routes/auth');
+
+app.use('/', index);
+// app.use('/users', users);
+app.use('/', authRoutes);
+
+
+
+//require('./passport')(app);
 
 
 // catch 404 and forward to error handler

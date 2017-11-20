@@ -12,6 +12,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 
 const users = [
   {
+    username: 'gema',
     name: 'Gema',
     email: 'gema@gmail.com',
     password: encryptedPass,
@@ -22,6 +23,7 @@ const users = [
     role: 'admin',
   },
   {
+    username: 'manu',
     name: 'Manu',
     email: 'manu@gmail.com',
     password: encryptedPass,
@@ -32,6 +34,7 @@ const users = [
     role: 'psychologist',
   },
   {
+    username: 'pepe',
     name: 'Pepe',
     email: 'pepe@gmail.com',
     password: encryptedPass,
@@ -42,6 +45,7 @@ const users = [
     role: 'psychologist',
   },
   {
+    username: 'clinicacibeles',
     name: 'Clínica Cibeles',
     email: 'cibeles@gmail.com',
     password: encryptedPass,
@@ -52,6 +56,7 @@ const users = [
     role: 'clinic',
   },
   {
+    username: 'clinicaandreu',
     name: 'Clínica Andreu',
     email: 'andreu@gmail.com',
     password: encryptedPass,
@@ -62,6 +67,7 @@ const users = [
     role: 'clinic',
   },
   {
+    username: 'antonio',
     name: 'Antonio',
     email: 'antonio@gmail.com',
     password: encryptedPass,
@@ -70,6 +76,7 @@ const users = [
     role: 'patient'
   },
   {
+    username: 'lola',
     name: 'Lola',
     email: 'lola@gmail.com',
     password: encryptedPass,
@@ -89,7 +96,7 @@ User.collection.drop(); //Elimina la colección asociada al modelo. Para que cad
   }
 
   docs.forEach((user) => {
-    console.log(user.name)
+    console.log(user.name);
   });
 
   //importante cerrar la conexión con mongoose
