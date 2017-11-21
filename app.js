@@ -6,7 +6,6 @@ const MongoStore   = require('connect-mongo')(session);
 require('./config/database');
 const app = express();
 require('./config/passport/passport')(app);
-// Default value for title local
 require('./config/express')(app);
 
 //Routes
