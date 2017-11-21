@@ -4,7 +4,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
-const User = require('../models/user');
+const User = require('../models/User');
 
 const router = express.Router();
 const bcryptSalt = 10;
@@ -60,9 +60,9 @@ router.post('/signup', ensureLoggedOut(), (req, res, next) => {
       role: role
     };
 
-    const User = new User(userSubmission);
+    const newUser = new User(userSubmission);
 
-    User.save((err) => {
+    newUser.save((err) => {
       if (err) {
         res.render('auth/signup', {
           errorMessage: 'Something went wrong. Try again later.'
