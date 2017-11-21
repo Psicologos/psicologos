@@ -8,12 +8,14 @@ const app = express();
 require('./config/passport/passport')(app);
 require('./config/express')(app);
 
-//Routes
+//Configuracion de Routes
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
+const profile = require('./routes/user/show');
 
 app.use('/', index);
 app.use('/', authRoutes);
+app.use('/', profile);
 
 require('./config/error-handler')(app);
 

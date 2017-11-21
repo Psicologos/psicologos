@@ -1,8 +1,8 @@
+
 <h1><%= title %></h1>
 <p>Welcome to
   <%= title %>
 </p>
-
 <% if(!user){ %>
   <ul>
     <li><a href="/login">Login</a></li>
@@ -11,7 +11,6 @@
   <% }else{ %>
     <a href="/logout">Logout <%= user.username %></a>
     <% } %>
-
       <div class="container">
         <form action="">
           <div class="form-group">
@@ -19,5 +18,26 @@
             <input type="search" class="form-control">
           </div>
         </form>
-
       </div>
+
+      <div class="">
+        <p>TOP PSICOLOGOS</p>
+        <% users.forEach((user) => { %>
+          <p>
+            <% if(user.role === "psychologist") {%>
+            <%= user.name %>
+            <a href="/p_profile?id=<%= user._id %>">View Profile</a>
+          </p>
+        <% }}); %>
+      </div>
+
+<div class="">
+  <p>TOP CLINICAS DE PSICOLOGIA</p>
+  <% users.forEach((user) => { %>
+    <p>
+      <% if(user.role === "clinic") {%>
+      <%= user.name %>
+      <a href="/c_profile?id=<%= user._id %>">View Profile</a>
+    </p>
+  <% }}); %>
+</div>

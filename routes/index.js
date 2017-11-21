@@ -1,11 +1,14 @@
 const express = require('express');
 const router  = express.Router();
-const User = require('../models/user');
-
+const User = require('../models/User');
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  console.log(req.user);
-  res.render('index');
-});
+   User.find({},(err, usersFromDatabase) => {
+     if (err) { return next(err) }
+     res.render('index', {
+       users: usersFromDatabase
+     });
+   });
+ });
 
 module.exports = router;
