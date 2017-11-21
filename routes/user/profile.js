@@ -34,12 +34,31 @@ profileRoutes.get('/edit-profile', ensureLoggedIn(), (req, res, next) => {
 
 profileRoutes.post('/edit-profile', (req, res, next) => {
   let id = req.user._id;
-  console.log('ID =======>', id);
+  console.log('speciality =======>', req.body);
 
   const updates = {
-    name: req.body.name,
     username: req.body.username,
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    address: req.body.address,
+    city: req.body.city,
+    photo: req.body.photo,
+    speciality: [],
+    target: [],
+    orientation: [],
+    identification: req.body.identification,
+    description: req.body.description,
+    website: req.body.website,
+    // associate_psychologist:
+    // associate_patients:
+    // associate_clinics:
+    role: req.body.role,
   };
+
+  if(req.body.clinica) {
+    updates.speciality.push("clinica");
+  }
   console.log('Updates =======>', updates);
 
   User.findByIdAndUpdate(id, updates, (err, profile) => {

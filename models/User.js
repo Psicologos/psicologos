@@ -26,34 +26,37 @@ const userSchema = new Schema({
   city: String,
   photo: String,
   //[clinica, pareja, educativa, niños, adolescentes, adultos, cognitivo-conductual, psicodinamica, sistemica]
-  detail: [{
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }],
+  speciality: [String],
+  target: [String],
+  orientation: [String],
+  // detail: [{
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }],
   comments: {
     type: Schema.Types.ObjectId,
     ref: "User"
