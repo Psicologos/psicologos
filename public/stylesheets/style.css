@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.professional-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.professional-list li {
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.professional-list li:last-of-type {
+  margin-right: 0;
+}
+
+.professional-list img {
+  max-width: 100%;
+}
