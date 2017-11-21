@@ -19,5 +19,11 @@
             <input type="search" class="form-control">
           </div>
         </form>
+        <h1>Listado Profesionales</h1>
 
+<ul>
+  <% result.forEach((user) => { %>
+  <li><%= user.name %></li>
+  <% })%>
+</ul>
       </div>
