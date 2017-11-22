@@ -1,6 +1,6 @@
 const path = require('path');
 const mongoose = require('mongoose');
-const dbURL = process.env.DBURL;require('dotenv').config();
+const dbURL = process.env.DBURL;
 
 mongoose.connect(dbURL)
   .then(() => console.log(`Connected to ${dbURL}`))
