@@ -27,6 +27,7 @@ router.get('/p_profile', (req, res, next) => {
   });
 });
 
+  
 //RUTA A LA VISTA PARA MOSTRAR PERFIL DE 1 CLINICA
 //const userId2 = "5a140dd08e184910dd2f4514";
 
