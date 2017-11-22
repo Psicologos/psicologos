@@ -44,7 +44,7 @@
           <p>
             <% if(user.role === "psychologist") {%>
             <%= user.name %>
-            <a href="/p_profile?id=<%= user._id %>">View Profile</a>
+            <a href="/p_profile/<%= user._id %>">View Profile</a>
           </p>
         <% }}); %>
       </div>
@@ -55,7 +55,7 @@
     <p>
       <% if(user.role === "clinic") {%>
       <%= user.name %>
-      <a href="/c_profile?id=<%= user._id %>">View Profile</a>
+      <a href="/c_profile/<%= user._id %>">View Profile</a>
     </p>
   <% }}); %>
 </div>
