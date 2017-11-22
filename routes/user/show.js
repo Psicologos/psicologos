@@ -32,14 +32,36 @@ router.post('/p_profile',ensureLoggedIn(), (req, res, next) => {
       res.redirect(`/p_profile/${req.body.idUser}`);
     });
   });
+
+//MUESTRA EL PERFIL INDIVIDUAL DE CADA CLINICA
 router.get('/c_profile/:id', ensureLoggedIn(), (req, res, next) => {
   User.findById(req.params.id, (err, clinicFromDatabase) => {
     if (err) {
       return next(err);
     }
     res.render('c_profile', {
-      clinic: clinicFromDatabase
+      clinic: clinicFromDatabase,
+      userLogged: req.user._id
     });
   });
 });
+
+// GUARDAR LOS COMENTARIOS EN LA BASE DE DATOS
+router.post('/c_profile',ensureLoggedIn(), (req, res, next) => {
+    const commentClinic = {
+      comment: req.body.description,
+      author_id: req.body.idUserLogged,
+      receiver_id: req.body.idUser
+      //FALTA INCLUIR EL rating CON LAS ESTRELLITAS
+    };
+   const theCommentClinic = new Comment(commentClinic);
+    theCommentClinic.save((err) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect(`/c_profile/${req.body.idUser}`);
+    });
+  });
+
 module.exports = router;
