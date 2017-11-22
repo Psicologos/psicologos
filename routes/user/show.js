@@ -10,12 +10,11 @@ router.get('/p_profile/:id',ensureLoggedIn(), (req, res, next) => {
       return next(err);
     }
     res.render('p_profile', {
-      user:userFromDatabase,
+      psychologist:userFromDatabase,
       userLogged:req.user._id
     });
   });
 });
-
 // GUARDAR LOS COMENTARIOS EN LA BASE DE DATOS
 router.post('/p_profile',ensureLoggedIn(), (req, res, next) => {
     const commentInfo = {
@@ -24,7 +23,6 @@ router.post('/p_profile',ensureLoggedIn(), (req, res, next) => {
       receiver_id: req.body.idUser
       //FALTA INCLUIR EL rating CON LAS ESTRELLITAS
     };
-
    const theComment = new Comment(commentInfo);
     theComment.save((err) => {
       if (err) {
@@ -34,16 +32,14 @@ router.post('/p_profile',ensureLoggedIn(), (req, res, next) => {
       res.redirect(`/p_profile/${req.body.idUser}`);
     });
   });
-
-router.get('/c_profile/:id', (req, res, next) => {
-  User.findById(req.params.id, (err, userFromDatabase) => {
+router.get('/c_profile/:id', ensureLoggedIn(), (req, res, next) => {
+  User.findById(req.params.id, (err, clinicFromDatabase) => {
     if (err) {
       return next(err);
     }
     res.render('c_profile', {
-      user: userFromDatabase
+      clinic: clinicFromDatabase
     });
   });
-  console.log(userFromDatabase);
 });
 module.exports = router;

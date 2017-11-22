@@ -40,22 +40,22 @@
 
       <div class="">
         <p>TOP PSICOLOGOS</p>
-        <% users.forEach((user) => { %>
+        <% users.forEach((psychologist) => { %>
           <p>
-            <% if(user.role === "psychologist") {%>
-            <%= user.name %>
-            <a href="/p_profile/<%= user._id %>">View Profile</a>
+            <% if(psychologist.role === "psychologist") {%>
+            <%= psychologist.name %>
+            <a href="/p_profile/<%= psychologist._id %>">View Profile</a>
           </p>
         <% }}); %>
       </div>
 
 <div class="">
   <p>TOP CLINICAS DE PSICOLOGIA</p>
-  <% users.forEach((user) => { %>
+  <% users.forEach((clinic) => { %>
     <p>
-      <% if(user.role === "clinic") {%>
-      <%= user.name %>
-      <a href="/c_profile/<%= user._id %>">View Profile</a>
+      <% if(clinic.role === "clinic") {%>
+      <%= clinic.name %>
+      <a href="/c_profile/<%= clinic._id %>">View Profile</a>
     </p>
   <% }}); %>
 </div>
