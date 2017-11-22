@@ -1,5 +1,4 @@
 const express = require('express');
-require('dotenv').config();
 const session = require('express-session');
 const favicon = require('serve-favicon');
 const MongoStore = require('connect-mongo')(session);
