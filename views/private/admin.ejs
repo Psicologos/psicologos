@@ -1,0 +1,24 @@
+<div class="form-holder">
+  <h2 class="text-center">Área privada de administración</h2>
+  <ul>
+    <% users.forEach((e) => { %>
+      <li class="users">
+        <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
+        <h3>
+        <%= e.name %>
+      </h3>
+        <p>
+          <%= e.address %>
+        </p>
+        <p>
+          <%= e.city %>
+        </p>
+        <a href="/p_profile?id=<%= e._id %>">Pefil</a>
+        <form action="/edit-admin" method="post">
+          <input type="hidden" name="id" value="<%= e._id %>">
+          <button class="btn btn-success">Validar</button>
+        </form>
+      </li>
+      <%})%>
+  </ul>
+</div>

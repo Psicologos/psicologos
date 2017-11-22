@@ -154,9 +154,10 @@
         </div>
         <button class="btn btn-primary">Guardar</button>
         <button class="btn btn-danger">Eliminar perfil</button>
+        <button class="btn btn-danger">Eliminar perfil</button>
       </form>
     </div>
-    <% } else %>
+    <% } else if (user.role === "patient"){ %>
 
       <div class="form-holder">
         <h2 class="text-center">Área privada de pacientes</h2>
@@ -197,3 +198,4 @@
           <button class="btn btn-danger">Eliminar perfil</button>
         </form>
       </div>
+      <% } %>

@@ -6,31 +6,39 @@ const {
   ensureLoggedOut
 } = require('connect-ensure-login');
 
+
+function checkRoles(role) {
+  return function(req, res, next) {
+    if (req.isAuthenticated() && req.user.role === role) {
+      console.log("ENTRO EN MIDDLE TRUE");
+      return next();
+    } else {
+      res.redirect('/edit-profile')
+    }
+  }
+}
+
+profileRoutes.get('/edit-admin', ensureLoggedIn(), checkRoles('admin'), (req, res) => {
+  User.find({ validation: false }, (err, userLists) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.render('private/admin', {users: userLists});
+  });
+});
+
+profileRoutes.post('/edit-admin', ensureLoggedIn(), checkRoles('admin'), (req, res) => {
+  User.update({ _id: req.body.id }, { $set: { validation: true }}, (err, profile) => {
+    if (err){ return next(err); }
+
+    return res.redirect("/edit-admin");
+  });
+});
+
 profileRoutes.get('/edit-profile', ensureLoggedIn(), (req, res, next) => {
   res.render('private/edit-profile');
 });
-
-// profile.get('/:id', (req, res, next) => {
-//   User.findById(req.params.id, (err, user) => {
-//     if (err) { 
-//       return next(err);
-//     };
-//     if ((typeof(req.session.currentUser)) !== 'undefined' && req.session.currentUser.username == user.username) {
-//       // if its same show private page
-//       user['public'] = 0;
-//       res.render('private/edit-profile', user);
-//     } else {
-//       res.render('profile/show', {
-//         name: user.name,
-//         jobTitle: user.jobTitle,
-//         imageUrl: user.imageUrl,
-//         company: user.company,
-//         public: 1
-//       });
-//
-//     };
-//   });
-// });
 
 profileRoutes.post('/edit-profile', (req, res, next) => {
   let id = req.user._id;
@@ -59,6 +67,7 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
   if(req.body.clinica) {
     updates.speciality.push("clinica");
   }
+
   console.log('Updates =======>', updates);
 
   User.findByIdAndUpdate(id, updates, (err, profile) => {
@@ -69,16 +78,6 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
 
   User.findByIdAndRemove(id, (error) => {
     res.redirect('/');
-  });
-});
-
-profileRoutes.get('/psychologists', (req, res, next) => {
-  User.find({
-    role: "psychologist"
-  }, function(err, users) {
-    res.render('private/psychologists', {
-      users: users
-    });
   });
 });
 

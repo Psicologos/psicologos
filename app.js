@@ -1,7 +1,7 @@
-const express      = require('express');
-const session  = require('express-session');
-const favicon      = require('serve-favicon');
-const MongoStore   = require('connect-mongo')(session);
+const express = require('express');
+const session = require('express-session');
+const favicon = require('serve-favicon');
+const MongoStore = require('connect-mongo')(session);
 
 require('./config/database');
 const app = express();
