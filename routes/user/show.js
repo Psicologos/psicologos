@@ -1,50 +1,49 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const User = require('../../models/User');
+const Comment = require('../../models/Comment');
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
-// router.get('/', function(req, res, next) {
-//   User.find()
-//     .then(result => {
-//       console.log(result)
-//       res.render('/', {result})
-//     });
-// });
-
-//RUTA PARA MOSTRAR EL PERFIL DE CADA PSICOLOGO
-
-// router.get('/p_profile', (req, res, next) => {
-//   User.find({role: "clinic"},(err, usersFromDatabase) => {
-//     console.log (usersFromDatabase);
-//       if (err) { return next(err) }
-//       res.render('p_profile', {
-//         user: usersFromDatabase
-//      });
-//   });
-// });
-
-//RUTA A LA VISTA PARA MOSTRAR PERFIL DE 1 PSICOLOGO
-
-//const userId = "5a140dd08e184910dd2f4512";
-
-router.get('/p_profile', (req, res, next) => {
-  const userId = req.query.id;
-  User.findById(userId,(err, userFromDatabase) => {
-    console.log (userFromDatabase);
-      if (err) { return next(err) }
-      res.render('p_profile', {user: userFromDatabase});
+router.get('/p_profile/:id',ensureLoggedIn(), (req, res, next) => {
+  User.findById(req.params.id, (err, userFromDatabase) => {
+    if (err) {
+      return next(err);
+    }
+    res.render('p_profile', {
+      user:userFromDatabase,
+      userLogged:req.user._id
+    });
   });
 });
 
+// GUARDAR LOS COMENTARIOS EN LA BASE DE DATOS
+router.post('/p_profile',ensureLoggedIn(), (req, res, next) => {
+    const commentInfo = {
+      comment: req.body.description,
+      author_id: req.body.idUserLogged,
+      receiver_id: req.body.idUser
+      //FALTA INCLUIR EL rating CON LAS ESTRELLITAS
+    };
 
-//RUTA A LA VISTA PARA MOSTRAR PERFIL DE 1 CLINICA
-//const userId2 = "5a140dd08e184910dd2f4514";
-
-router.get('/c_profile', (req, res, next) => {
-  const userId2 = req.query.id;
-  User.findById(userId2,(err, userFromDatabase) => {
-    console.log (userFromDatabase);
-      if (err) { return next(err) }
-      res.render('c_profile', {user: userFromDatabase});
+   const theComment = new Comment(commentInfo);
+    theComment.save((err) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect(`/p_profile/${req.body.idUser}`);
+    });
   });
+
+router.get('/c_profile/:id', (req, res, next) => {
+  User.findById(req.params.id, (err, userFromDatabase) => {
+    if (err) {
+      return next(err);
+    }
+    res.render('c_profile', {
+      user: userFromDatabase
+    });
+  });
+  console.log(userFromDatabase);
 });
 module.exports = router;

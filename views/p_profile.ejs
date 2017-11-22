@@ -1,6 +1,5 @@
 <p>PERFIL INDIVIDUAL DEL PSICOLOGO</p>
 
-
 <!--  Hay que pasarle como parametro users a un único psicologo
 para que pinte su perfil-->
 <div class="">
@@ -13,3 +12,12 @@ para que pinte su perfil-->
 <p><%= user.detail%></p>
 
 </div>
+
+<!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
+  <form action="/p_profile?id=<%= user._id %>" method="POST">
+    <p><label for="comment">Comentarios</label></p>
+    <textarea name="description" id="comment" ></textarea>
+    <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
+    <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
+    <p><button type="submit">Enviar Comentario</button></p>
+  </form>
