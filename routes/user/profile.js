@@ -76,9 +76,9 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
     return res.redirect("/");
   });
 
-  User.findByIdAndRemove(id, (error) => {
-    res.redirect('/');
-  });
+  // User.findByIdAndRemove(id, (error) => {
+  //   res.redirect('/');
+  // });
 });
 
 profileRoutes.post('/psychologists', ensureLoggedIn(), (req, res, next) => {
