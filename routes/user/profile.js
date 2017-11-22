@@ -99,11 +99,13 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
 });
 
 profileRoutes.get('/psychologists', (req, res, next) => {
+  console.log(req.user);
   User.find({
     role: "psychologist"
   }, function(err, users) {
     res.render('private/psychologists', {
-      users: users
+      users: users,
+      user: req.user
     });
   });
 });
