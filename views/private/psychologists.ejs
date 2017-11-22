@@ -1,0 +1,21 @@
+<h1>Psicólogos</h1>
+<ul class="professional-list">
+  <% users.forEach((e) => { %>
+    <li class="users">
+      <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
+      <h3>
+        <%= e.name %>
+      </h3>
+      <p>
+        <%= e.address %>
+      </p>
+      <p>
+        <%= e.city %>
+      </p>
+      <form action="/psychologists" method="post">
+        <input type="hidden" name="id" value="<%= e._id %>">
+        <button class="btn btn-success">Add</button>
+      </form>
+    </li>
+    <%})%>
+</ul>

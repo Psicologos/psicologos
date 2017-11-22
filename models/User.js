@@ -26,38 +26,45 @@ const userSchema = new Schema({
   city: String,
   photo: String,
   //[clinica, pareja, educativa, niños, adolescentes, adultos, cognitivo-conductual, psicodinamica, sistemica]
-  detail: [{
+  speciality: [String],
+  target: [String],
+  orientation: [String],
+  // detail: [{
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }, {
+  //   type: Boolean,
+  //   default: true
+  // }],
+  validation: {
     type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }, {
-    type: Boolean,
-    default: true
-  }],
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
+    default: false
   },
+  // validate: {
+  //   type: Boolean,
+  //   default: true
+  // },
   identification: String, //nº colegiado / registro sanitario
   description: String,
   rate: Number, //nº colegiado / registro sanitario
@@ -80,6 +87,7 @@ const userSchema = new Schema({
     enum: ['admin', 'psychologist', 'clinic', 'patient']
     // required: true
   },
+
 }, {
   timestamps: {
     createdAt: "created_at",

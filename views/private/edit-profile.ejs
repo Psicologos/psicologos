@@ -1,0 +1,200 @@
+<% if(user.role === "clinic"){ %>
+  <div class="form-holder">
+    <h2 class="text-center">Área privada clínica</h2>
+    <form action="/edit-profile" class="form-edit" method="post">
+      <div class="form-group">
+        <label for="username-input">Username</label>
+        <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="name-input">Name</label>
+        <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email-input">Email</label>
+        <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="number" name="phone" id="phone" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="photo">Photo</label>
+        <input type="text" name="photo" id="photo" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Especialidad</label>
+        <input type="checkbox" id="e-clinic" name="detail">
+        <label for="e-clinic">Clínicas</label>
+        <input type="checkbox" id="e-couple" name="detail">
+        <label for="e-couple">Pareja</label>
+        <input type="checkbox" id="e-educational" name="detail">
+        <label for="e-educational">Educativa</label>
+      </div>
+      <div class="form-group">
+        <label>Tipología de pacientes</label>
+        <input type="checkbox" id="e-children" name="detail">
+        <label for="e-children">Niños</label>
+        <input type="checkbox" id="e-teenager" name="detail">
+        <label for="e-teenager">Adolescentes</label>
+        <input type="checkbox" id="e-adults" name="detail">
+        <label for="e-adults">Adultos</label>
+      </div>
+      <div class="form-group">
+        <label>Orientación</label>
+        <input type="checkbox" id="e-cognitive" name="detail">
+        <label for="e-cognitive">Cognitivo conductual</label>
+        <input type="checkbox" id="e-dinamic" name="detail">
+        <label for="e-dinamic">Psicodinámica</label>
+        <input type="checkbox" id="e-sistemic" name="detail">
+        <label for="e-sistemic">Sistémica</label>
+      </div>
+      <div class="form-group">
+        <label for="identification">Identificación / Número de colegiado</label>
+        <input type="text" name="identification" id="identification" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input type="text" name="description" id="description" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="text" name="website" id="website" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Psicólogos asociados</label>
+        <a href="/psychologists">Actualizar</a>
+      </div>
+      <form action="/edit" metho="post"></form>
+      <button class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+
+  <% } else if (user.role === "psychologist") { %>
+    <div class="form-holder">
+      <h2 class="text-center">Área privada psicólogo</h2>
+      <form action="/edit-profile" class="form-edit" method="post">
+        <div class="form-group">
+          <label for="username-input">Username</label>
+          <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="name-input">Name</label>
+          <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email-input">Email</label>
+          <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="number" name="phone" id="phone" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" name="city" id="city" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input type="text" name="photo" id="photo" class="form-control">
+        </div>
+        <label>Especialidad</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="e-clinic" name="clinica">
+          <label for="e-clinic">Clínicas</label>
+          <input type="checkbox" id="e-couple" name="pareja">
+          <label for="e-couple">Pareja</label>
+          <input type="checkbox" id="e-educational" name="educativa">
+          <label for="e-educational">Educativa</label>
+        </div>
+
+        <label>Tipología de pacientes</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="e-children" name="niños">
+          <label for="e-children">Niños</label>
+          <input type="checkbox" id="e-teenager" name="detail">
+          <label for="e-teenager">Adolescentes</label>
+          <input type="checkbox" id="e-adults" name="detail">
+          <label for="e-adults">Adultos</label>
+        </div>
+        <div class="form-group">
+          <label>Orientación</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="e-cognitive" name="detail">
+            <label for="e-cognitive">Cognitivo conductual</label>
+            <input type="checkbox" id="e-dinamic" name="detail">
+            <label for="e-dinamic">Psicodinámica</label>
+            <input type="checkbox" id="e-sistemic" name="detail">
+            <label for="e-sistemic">Sistémica</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="identification">Identificación / Número de colegiado</label>
+          <input type="text" name="identification" id="identification" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <input type="text" name="description" id="description" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input type="text" name="website" id="website" class="form-control">
+        </div>
+        <button class="btn btn-primary">Guardar</button>
+        <button class="btn btn-danger">Eliminar perfil</button>
+        <button class="btn btn-danger">Eliminar perfil</button>
+      </form>
+    </div>
+    <% } else %>
+
+      <div class="form-holder">
+        <h2 class="text-center">Área privada de pacientes</h2>
+        <form action="/edit-profile" class="form-edit" method="post">
+          <div class="form-group">
+            <label for="username-input">Username</label>
+            <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="name-input">Name</label>
+            <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email-input">Email</label>
+            <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="number" name="phone" id="phone" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="text" name="photo" id="photo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" name="description" id="description" class="form-control">
+          </div>
+          <button class="btn btn-primary">Guardar</button>
+          <button class="btn btn-danger">Eliminar perfil</button>
+        </form>
+      </div>

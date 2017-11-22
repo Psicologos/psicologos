@@ -11,9 +11,11 @@ require('./config/express')(app);
 //Routes
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/user/profile');
 
 app.use('/', index);
 app.use('/', authRoutes);
+app.use('/', profileRoutes);
 
 require('./config/error-handler')(app);
 
