@@ -98,6 +98,17 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
   });
 });
 
+profileRoutes.get('/delete-profile', ensureLoggedIn(), (req, res, next) => {
+  res.render('private/edit-profile');
+});
+
+profileRoutes.post('/delete-profile', ensureLoggedIn(), (req, res, next) => {
+  let id = req.user._id;
+  User.findByIdAndRemove(id, (error) => {
+    res.redirect('/');
+  });
+});
+
 profileRoutes.get('/psychologists', (req, res, next) => {
   console.log(req.user);
   User.find({

@@ -79,7 +79,11 @@
       <input type="hidden" name="role" value="<%= user.role %>">
       <button class="btn btn-primary">Guardar</button>
     </form>
+    <form action="/delete-profile" method="post">
+      <button class="btn btn-primary">Eliminar</button>
+    </form>
   </div>
+  <!--  end clinics form -->
 
   <% } else if (user.role === "psychologist") { %>
     <div class="form-holder">
@@ -157,7 +161,12 @@
         </div>
         <input type="hidden" name="role" value="<%= user.role %>">
         <button class="btn btn-primary">Guardar</button>
+      </form>
+      <form action="/delete-profile" method="post">
+        <button class="btn btn-primary">Eliminar</button>
+      </form>
     </div>
+    <!--  end psychologist form -->
     <% } else if (user.role === "patient"){ %>
 
       <div class="form-holder">
@@ -198,5 +207,9 @@
           <input type="hidden" name="role" value="<%= user.role %>">
           <button class="btn btn-primary">Guardar</button>
         </form>
+        <form action="/delete-profile" method="post">
+          <button class="btn btn-primary">Eliminar</button>
+        </form>
       </div>
+      <!--  end patient form -->
       <% } %>

@@ -15,47 +15,25 @@
       </a>
       </div>
     </div>
-  </div>
-
-<h1><%= title %></h1>
-<p>Welcome to
-  <%= title %>
-</p>
-<% if(!user){ %>
-  <ul>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">signup</a></li>
-  </ul>
-  <% }else{ %>
-    <a href="/logout">Logout <%= user.username %></a>
-    <% } %>
-      <div class="container">
-        <form action="">
-          <div class="form-group">
-            <label for="">¿En qué podemos ayudarte?</label>
-            <input type="search" class="form-control">
-          </div>
-        </form>
-      </div>
-
-      <div class="">
-        <p>TOP PSICOLOGOS</p>
-        <% users.forEach((psychologist) => { %>
-          <p>
-            <% if(psychologist.role === "psychologist") {%>
+    <div class="">
+      <p>TOP PSICOLOGOS</p>
+      <% users.forEach((psychologist) => { %>
+        <p>
+          <% if(psychologist.role === "psychologist") {%>
             <%= psychologist.name %>
-            <a href="/p_profile/<%= psychologist._id %>">View Profile</a>
-          </p>
+              <a href="/p_profile/<%= psychologist._id %>">View Profile</a>
+        </p>
         <% }}); %>
-      </div>
+    </div>
 
-<div class="">
-  <p>TOP CLINICAS DE PSICOLOGIA</p>
-  <% users.forEach((clinic) => { %>
-    <p>
-      <% if(clinic.role === "clinic") {%>
-      <%= clinic.name %>
-      <a href="/c_profile/<%= clinic._id %>">View Profile</a>
-    </p>
-  <% }}); %>
-</div>
+    <div class="">
+      <p>TOP CLINICAS DE PSICOLOGIA</p>
+      <% users.forEach((clinic) => { %>
+        <p>
+          <% if(clinic.role === "clinic") {%>
+            <%= clinic.name %>
+              <a href="/c_profile/<%= clinic._id %>">View Profile</a>
+        </p>
+        <% }}); %>
+    </div>
+  </div>
