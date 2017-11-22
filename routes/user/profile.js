@@ -55,6 +55,7 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
     speciality: [],
     target: [],
     orientation: [],
+    role: req.body.role,
     identification: req.body.identification,
     description: req.body.description,
     website: req.body.website,
@@ -64,15 +65,20 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
     role: req.body.role,
   };
 
-  if(req.body.clinica) {
-    updates.speciality.push("clinica");
-  }
+  if(req.body.clinica) updates.speciality.push("clinica");
+  if(req.body.pareja) updates.speciality.push("pareja");
+  if(req.body.educativa) updates.speciality.push("educativa");
+  if(req.body.niños) updates.target.push("niños");
+  if(req.body.adolescentes) updates.target.push("adolescentes");
+  if(req.body.adultos) updates.target.push("adultos");
+  if(req.body.cognitivo) updates.orientation.push("cognitivo");
+  if(req.body.dinamica) updates.orientation.push("dinamica");
+  if(req.body.sistemica) updates.orientation.push("sistemica");
 
   console.log('Updates =======>', updates);
 
   User.findByIdAndUpdate(id, updates, (err, profile) => {
     if (err){ return next(err); }
-
     return res.redirect("/");
   });
 
@@ -80,6 +86,21 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
   //   res.redirect('/');
   // });
 });
+
+  // User.findByIdAndRemove(id, (error) => {
+  //   res.redirect('/');
+  // });
+
+  profileRoutes.get('/psychologists', (req, res, next) => {
+    User.find({
+      role: "psychologist"
+    }, function(err, users) {
+      res.render('private/psychologists', {
+        users: users
+      });
+    });
+  });
+
 
 profileRoutes.post('/psychologists', ensureLoggedIn(), (req, res, next) => {
   console.log(req.body.id);

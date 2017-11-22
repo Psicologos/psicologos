@@ -4,15 +4,15 @@
     <form action="/edit-profile" class="form-edit" method="post">
       <div class="form-group">
         <label for="username-input">Username</label>
-        <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control">
+        <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
       </div>
       <div class="form-group">
         <label for="name-input">Name</label>
-        <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control">
+        <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
       </div>
       <div class="form-group">
         <label for="email-input">Email</label>
-        <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control">
+        <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
       </div>
       <div class="form-group">
         <label for="phone">Phone</label>
@@ -20,15 +20,15 @@
       </div>
       <div class="form-group">
         <label for="city">City</label>
-        <input type="text" name="city" id="city" class="form-control">
+        <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
       </div>
       <div class="form-group">
         <label for="address">Address</label>
-        <input type="text" name="address" id="address" class="form-control">
+        <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
       </div>
       <div class="form-group">
         <label for="photo">Photo</label>
-        <input type="text" name="photo" id="photo" class="form-control">
+        <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
       </div>
       <label>Especialidad</label>
       <div class="checkbox-group">
@@ -62,21 +62,21 @@
       </div>
       <div class="form-group">
         <label for="identification">Identificación / Número de colegiado</label>
-        <input type="text" name="identification" id="identification" class="form-control">
+        <input type="text" name="identification" id="identification" class="form-control" value="<%= user.identification %>">
       </div>
       <div class="form-group">
         <label for="description">Descripción</label>
-        <input type="text" name="description" id="description" class="form-control">
+        <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
       </div>
       <div class="form-group">
         <label for="website">Website</label>
-        <input type="text" name="website" id="website" class="form-control">
+        <input type="text" name="website" id="website" class="form-control" value="<%= user.website %>">
       </div>
       <div class="form-group">
         <label>Psicólogos asociados</label>
         <a href="/psychologists">Actualizar</a>
       </div>
-      <form action="/edit" metho="post"></form>
+      <input type="hidden" name="role" value="<%= user.role %>">
       <button class="btn btn-primary">Guardar</button>
     </form>
   </div>
@@ -87,31 +87,31 @@
       <form action="/edit-profile" class="form-edit" method="post">
         <div class="form-group">
           <label for="username-input">Username</label>
-          <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control">
+          <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
         </div>
         <div class="form-group">
           <label for="name-input">Name</label>
-          <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control">
+          <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
         </div>
         <div class="form-group">
           <label for="email-input">Email</label>
-          <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control">
+          <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
         </div>
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="number" name="phone" id="phone" class="form-control">
+          <input type="number" name="phone" id="phone" class="form-control" value="<%= user.phone %>">
         </div>
         <div class="form-group">
           <label for="city">City</label>
-          <input type="text" name="city" id="city" class="form-control">
+          <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
         </div>
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" name="address" id="address" class="form-control">
+          <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
         </div>
         <div class="form-group">
           <label for="photo">Photo</label>
-          <input type="text" name="photo" id="photo" class="form-control">
+          <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
         </div>
         <label>Especialidad</label>
         <div class="checkbox-group">
@@ -145,20 +145,18 @@
         </div>
         <div class="form-group">
           <label for="identification">Identificación / Número de colegiado</label>
-          <input type="text" name="identification" id="identification" class="form-control">
+          <input type="text" name="identification" id="identification" class="form-control" value="<%= user.identification %>">
         </div>
         <div class="form-group">
           <label for="description">Descripción</label>
-          <input type="text" name="description" id="description" class="form-control">
+          <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
         </div>
         <div class="form-group">
           <label for="website">Website</label>
-          <input type="text" name="website" id="website" class="form-control">
+          <input type="text" name="website" id="website" class="form-control" value="<%= user.website %>">
         </div>
+        <input type="hidden" name="role" value="<%= user.role %>">
         <button class="btn btn-primary">Guardar</button>
-        <button class="btn btn-danger">Eliminar perfil</button>
-        <button class="btn btn-danger">Eliminar perfil</button>
-      </form>
     </div>
     <% } else if (user.role === "patient"){ %>
 
@@ -167,38 +165,38 @@
         <form action="/edit-profile" class="form-edit" method="post">
           <div class="form-group">
             <label for="username-input">Username</label>
-            <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control">
+            <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
           </div>
           <div class="form-group">
             <label for="name-input">Name</label>
-            <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control">
+            <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
           </div>
           <div class="form-group">
             <label for="email-input">Email</label>
-            <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="number" name="phone" id="phone" class="form-control">
+            <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
           </div>
           <div class="form-group">
             <label for="city">City</label>
-            <input type="text" name="city" id="city" class="form-control">
+            <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
           </div>
           <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" name="address" id="address" class="form-control">
+            <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id="phone" class="form-control" value="<%= user.phone %>">
           </div>
           <div class="form-group">
             <label for="photo">Photo</label>
-            <input type="text" name="photo" id="photo" class="form-control">
+            <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">>
           </div>
           <div class="form-group">
             <label for="description">Descripción</label>
-            <input type="text" name="description" id="description" class="form-control">
+            <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">>
           </div>
+          <input type="hidden" name="role" value="<%= user.role %>">
           <button class="btn btn-primary">Guardar</button>
-          <button class="btn btn-danger">Eliminar perfil</button>
         </form>
       </div>
       <% } %>
