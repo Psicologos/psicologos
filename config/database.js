@@ -1,7 +1,6 @@
 const path = require('path');
 const mongoose = require('mongoose');
-const dbName = 'psicologos';
-const dbURL = `mongodb://localhost/${dbName}`;
+const dbURL = process.env.DBURL
 
 mongoose.connect(dbURL)
   .then(() => console.log(`Connected to ${dbURL}`))
