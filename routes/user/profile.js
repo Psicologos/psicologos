@@ -66,6 +66,10 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
 
     return res.redirect("/");
   });
+
+  User.findByIdAndRemove(id, (error) => {
+    res.redirect('/');
+  });
 });
 
 profileRoutes.get('/psychologists', (req, res, next) => {
@@ -100,7 +104,6 @@ profileRoutes.get('/clinics', (req, res, next) => {
     });
   });
 });
-
 
 
 module.exports = profileRoutes;
