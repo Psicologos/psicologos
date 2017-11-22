@@ -74,7 +74,6 @@ router.post('/signup', ensureLoggedOut(), (req, res, next) => {
   });
 });
 
-
 //login
 router.get("/login", ensureLoggedOut(), (req, res, next) => {
   res.render("auth/login", {

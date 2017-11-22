@@ -25,46 +25,13 @@ const userSchema = new Schema({
   },
   city: String,
   photo: String,
-  //[clinica, pareja, educativa, niños, adolescentes, adultos, cognitivo-conductual, psicodinamica, sistemica]
   speciality: [String],
   target: [String],
   orientation: [String],
-  // detail: [{
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }, {
-  //   type: Boolean,
-  //   default: true
-  // }],
   validation: {
     type: Boolean,
     default: false
   },
-  // validate: {
-  //   type: Boolean,
-  //   default: true
-  // },
   identification: String, //nº colegiado / registro sanitario
   description: String,
   rate: Number, //nº colegiado / registro sanitario
@@ -78,14 +45,9 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  associate_patients: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
-  }, //psicólogos y clínicas asociados a los pacientes
   role: {
     type: String,
     enum: ['admin', 'psychologist', 'clinic', 'patient']
-    // required: true
   },
 
 }, {

@@ -4,20 +4,33 @@
 para que pinte su perfil-->
 <div class="">
 
-<p><%= user.name %></p>
-<p><%= user.role %> - <%= user.rate %> €/hora</p>
-<p><%= user.identification %></p>
-<p><%= user.email%></p>
-<p><%= user.address%> - <%= user.city%></p>
-<p><%= user.detail%></p>
+  <p>
+    <%= user.name %>
+  </p>
+  <p>
+    <%= user.role %> -
+      <%= user.rate %> €/hora</p>
+  <p>
+    <%= user.identification %>
+  </p>
+  <p>
+    <%= user.email%>
+  </p>
+  <p>
+    <%= user.address%> -
+      <%= user.city%>
+  </p>
+  <p>
+    <%= user.detail%>
+  </p>
 
 </div>
 
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
-  <form action="/p_profile?id=<%= user._id %>" method="POST">
-    <p><label for="comment">Comentarios</label></p>
-    <textarea name="description" id="comment" ></textarea>
-    <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
-    <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
-    <p><button type="submit">Enviar Comentario</button></p>
-  </form>
+<form action="/p_profile?id=<%= user._id %>" method="POST">
+  <p><label for="comment">Comentarios</label></p>
+  <textarea name="description" id="comment"></textarea>
+  <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
+  <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
+  <p><button type="submit">Enviar Comentario</button></p>
+</form>

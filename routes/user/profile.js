@@ -13,24 +13,36 @@ function checkRoles(role) {
       console.log("ENTRO EN MIDDLE TRUE");
       return next();
     } else {
-      res.redirect('/edit-profile')
+      res.redirect('/edit-profile');
     }
-  }
+  };
 }
 
 profileRoutes.get('/edit-admin', ensureLoggedIn(), checkRoles('admin'), (req, res) => {
-  User.find({ validation: false }, (err, userLists) => {
+  User.find({
+    validation: false
+  }, (err, userLists) => {
     if (err) {
       next(err);
       return;
     }
-    res.render('private/admin', {users: userLists});
+    res.render('private/admin', {
+      users: userLists
+    });
   });
 });
 
 profileRoutes.post('/edit-admin', ensureLoggedIn(), checkRoles('admin'), (req, res) => {
-  User.update({ _id: req.body.id }, { $set: { validation: true }}, (err, profile) => {
-    if (err){ return next(err); }
+  User.update({
+    _id: req.body.id
+  }, {
+    $set: {
+      validation: true
+    }
+  }, (err, profile) => {
+    if (err) {
+      return next(err);
+    }
 
     return res.redirect("/edit-admin");
   });
@@ -59,47 +71,39 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
     identification: req.body.identification,
     description: req.body.description,
     website: req.body.website,
-    // associate_psychologist:
-    // associate_patients:
-    // associate_clinics:
+    associate_clinics: [],
     role: req.body.role,
   };
 
-  if(req.body.clinica) updates.speciality.push("clinica");
-  if(req.body.pareja) updates.speciality.push("pareja");
-  if(req.body.educativa) updates.speciality.push("educativa");
-  if(req.body.niños) updates.target.push("niños");
-  if(req.body.adolescentes) updates.target.push("adolescentes");
-  if(req.body.adultos) updates.target.push("adultos");
-  if(req.body.cognitivo) updates.orientation.push("cognitivo");
-  if(req.body.dinamica) updates.orientation.push("dinamica");
-  if(req.body.sistemica) updates.orientation.push("sistemica");
+  if (req.body.clinica) updates.speciality.push("clinica");
+  if (req.body.pareja) updates.speciality.push("pareja");
+  if (req.body.educativa) updates.speciality.push("educativa");
+  if (req.body.niños) updates.target.push("niños");
+  if (req.body.adolescentes) updates.target.push("adolescentes");
+  if (req.body.adultos) updates.target.push("adultos");
+  if (req.body.cognitivo) updates.orientation.push("cognitivo");
+  if (req.body.dinamica) updates.orientation.push("dinamica");
+  if (req.body.sistemica) updates.orientation.push("sistemica");
 
   console.log('Updates =======>', updates);
 
   User.findByIdAndUpdate(id, updates, (err, profile) => {
-    if (err){ return next(err); }
+    if (err) {
+      return next(err);
+    }
     return res.redirect("/");
   });
-
-  // User.findByIdAndRemove(id, (error) => {
-  //   res.redirect('/');
-  // });
 });
 
-  // User.findByIdAndRemove(id, (error) => {
-  //   res.redirect('/');
-  // });
-
-  profileRoutes.get('/psychologists', (req, res, next) => {
-    User.find({
-      role: "psychologist"
-    }, function(err, users) {
-      res.render('private/psychologists', {
-        users: users
-      });
+profileRoutes.get('/psychologists', (req, res, next) => {
+  User.find({
+    role: "psychologist"
+  }, function(err, users) {
+    res.render('private/psychologists', {
+      users: users
     });
   });
+});
 
 
 profileRoutes.post('/psychologists', ensureLoggedIn(), (req, res, next) => {

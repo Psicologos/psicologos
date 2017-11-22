@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
-const dbURL ='mongodb://localhost/psicologos'
-mongoose.connect(dbURL, {useMongoClient: true});
+const dbURL = 'mongodb://localhost/psicologos'
+mongoose.connect(dbURL, {
+  useMongoClient: true
+});
 const User = require('../models/user');
 
 //Password
-const bcrypt         = require("bcrypt");
-const bcryptSalt     = 10;
+const bcrypt = require("bcrypt");
+const bcryptSalt = 10;
 var salt = bcrypt.genSaltSync(bcryptSalt);
 const password = "ironhack";
 var encryptedPass = bcrypt.hashSync(password, salt);
 
-const users = [
-  {
+const users = [{
     username: 'gema',
     name: 'Gema',
     email: 'gema@gmail.com',
@@ -88,8 +89,8 @@ const users = [
 
 User.collection.drop(); //Elimina la colección asociada al modelo. Para que cada vez que lo ejecute, no lo vuelva a crear.
 
-  //importante cerrar la conexión con mongoose
-  User.create(users, (err, docs) => {
+//importante cerrar la conexión con mongoose
+User.create(users, (err, docs) => {
   //le pasamos como primer parámetro un array de objetos
   if (err) {
     throw err;
