@@ -1,9 +1,12 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
-const dbURL = 'mongodb://localhost/psicologos'
+
+const dbURL = process.env.DBURL;
 mongoose.connect(dbURL, {
   useMongoClient: true
 });
-const User = require('../models/user');
+const User = require('../models/User');
 
 //Password
 const bcrypt = require("bcrypt");

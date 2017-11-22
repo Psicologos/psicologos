@@ -11,18 +11,18 @@ const mongoose = require('mongoose');
 const expressLayouts  = require('express-ejs-layouts');
 
 module.exports = (app) => {
-  app.set('views', path.join(__dirname, '../views'))
+  app.set('views', path.join(__dirname, '../views'));
   app.set('view engine', 'ejs');
   app.set('layout', 'layouts/main-layout');
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(expressLayouts);
   app.use(logger('dev'));
-  app.use(bodyParser.json())
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: false
   }));
   app.use(cookieParser());
-  app.use(express.static(path.join(__dirname, '../public')))
+  app.use(express.static(path.join(__dirname, '../public')));
   app.use(session({
     secret: "psicologos",
     resave: true,

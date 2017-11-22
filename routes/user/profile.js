@@ -56,34 +56,37 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
   let id = req.user._id;
   console.log('speciality =======>', req.body);
 
+  const {
+    username,
+    name,
+    email,
+    phone,
+    address,
+    city,
+    photo,
+    role,
+    identification,
+    description,
+    website,
+  } = req.body;
+
   const updates = {
-    username: req.body.username,
-    name: req.body.name,
-    email: req.body.email,
-    phone: req.body.phone,
-    address: req.body.address,
-    city: req.body.city,
-    photo: req.body.photo,
+    username,email,name,phone,address,city,photo,role,identification,description,website,
     speciality: [],
     target: [],
     orientation: [],
-    role: req.body.role,
-    identification: req.body.identification,
-    description: req.body.description,
-    website: req.body.website,
     associate_clinics: [],
-    role: req.body.role,
   };
 
-  if (req.body.clinica) updates.speciality.push("clinica");
-  if (req.body.pareja) updates.speciality.push("pareja");
-  if (req.body.educativa) updates.speciality.push("educativa");
-  if (req.body.niños) updates.target.push("niños");
-  if (req.body.adolescentes) updates.target.push("adolescentes");
-  if (req.body.adultos) updates.target.push("adultos");
-  if (req.body.cognitivo) updates.orientation.push("cognitivo");
-  if (req.body.dinamica) updates.orientation.push("dinamica");
-  if (req.body.sistemica) updates.orientation.push("sistemica");
+  if (clinica) updates.speciality.push("clinica");
+  if (pareja) updates.speciality.push("pareja");
+  if (educativa) updates.speciality.push("educativa");
+  if (niños) updates.target.push("niños");
+  if (adolescentes) updates.target.push("adolescentes");
+  if (adultos) updates.target.push("adultos");
+  if (cognitivo) updates.orientation.push("cognitivo");
+  if (dinamica) updates.orientation.push("dinamica");
+  if (sistemica) updates.orientation.push("sistemica");
 
   console.log('Updates =======>', updates);
 
