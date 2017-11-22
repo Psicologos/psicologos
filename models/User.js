@@ -57,10 +57,14 @@ const userSchema = new Schema({
   //   type: Boolean,
   //   default: true
   // }],
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
+  validation: {
+    type: Boolean,
+    default: false
   },
+  // validate: {
+  //   type: Boolean,
+  //   default: true
+  // },
   identification: String, //nº colegiado / registro sanitario
   description: String,
   rate: Number, //nº colegiado / registro sanitario
@@ -83,6 +87,7 @@ const userSchema = new Schema({
     enum: ['admin', 'psychologist', 'clinic', 'patient']
     // required: true
   },
+
 }, {
   timestamps: {
     createdAt: "created_at",
