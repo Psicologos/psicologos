@@ -1,21 +1,23 @@
 <h1>Listado de clínicas</h1>
 <ul class="professional-list">
   <% users.forEach((e) => { %>
-    <li class="users">
-      <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
-      <h3>
+    <% if(e.validation === true) { %>
+      <li class="users">
+        <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
+        <h3>
         <%= e.name %>
       </h3>
-      <p>
-        <%= e.address %>
-      </p>
-      <p>
-        <%= e.city %>
-      </p>
-      <a href="/c_profile?id=<%= e._id %>">Pefil</a>
-      <form action="/psychologists" method="post">
-        <input type="hidden" name="id" value="<%= e._id %>">
-      </form>
-    </li>
-    <%})%>
+        <p>
+          <%= e.address %>
+        </p>
+        <p>
+          <%= e.city %>
+        </p>
+        <a href="/c_profile?id=<%= e._id %>">Pefil</a>
+        <form action="/psychologists" method="post">
+          <input type="hidden" name="id" value="<%= e._id %>">
+        </form>
+      </li>
+      <% } %>
+        <%})%>
 </ul>
