@@ -12,6 +12,7 @@
       <p>
         <%= e.city %>
       </p>
+      <a href="/p_profile?id=<%= e._id %>">Pefil</a>
       <form action="/psychologists" method="post">
         <input type="hidden" name="id" value="<%= e._id %>">
         <button class="btn btn-success">Add</button>
