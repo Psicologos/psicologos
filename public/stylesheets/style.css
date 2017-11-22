@@ -1,6 +1,7 @@
 body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #484848;
+  line-height: 1.2;
 }
 
 a {
@@ -89,6 +90,19 @@ h2 {
 /*Home*/
 .home {
   padding: 40px 0;
+}
+
+.home-list-holder {
+  margin-bottom: 40px;
+}
+
+.user-home p {
+  margin-bottom: 5px;
+}
+
+.user-home img {
+  max-width: 400px;
+  width: 100%;
 }
 .services-holder {
   display: flex;
