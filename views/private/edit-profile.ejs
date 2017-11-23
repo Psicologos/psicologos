@@ -1,177 +1,10 @@
 <% if(user.role === "clinic"){ %>
-  <div class="form-holder">
-    <h2 class="text-center">Área privada clínica</h2>
-    <form action="/edit-profile" class="form-edit" method="post">
-      <div class="form-group">
-        <label for="username-input">Username</label>
-        <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
-      </div>
-      <div class="form-group">
-        <label for="name-input">Name</label>
-        <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
-      </div>
-      <div class="form-group">
-        <label for="email-input">Email</label>
-        <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="number" name="phone" id="phone" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
-      </div>
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
-      </div>
-      <div class="form-group">
-        <label for="photo">Photo</label>
-        <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
-      </div>
-      <label>Especialidad</label>
-      <div class="checkbox-group">
-        <input type="checkbox" id="e-clinic" name="clinica">
-        <label for="e-clinic">Clínicas</label>
-        <input type="checkbox" id="e-couple" name="pareja">
-        <label for="e-couple">Pareja</label>
-        <input type="checkbox" id="e-educational" name="educativa">
-        <label for="e-educational">Educativa</label>
-      </div>
+  <div class="form-holder container">
+    <div class="form-content">
+      <div class="form-holder-inner">
 
-      <label>Tipología de pacientes</label>
-      <div class="checkbox-group">
-        <input type="checkbox" id="e-children" name="niños">
-        <label for="e-children">Niños</label>
-        <input type="checkbox" id="e-teenager" name="adolescentes">
-        <label for="e-teenager">Adolescentes</label>
-        <input type="checkbox" id="e-adults" name="adultos">
-        <label for="e-adults">Adultos</label>
-      </div>
-      <div class="form-group">
-        <label>Orientación</label>
-        <div class="checkbox-group">
-          <input type="checkbox" id="e-cognitive" name="cognitivo">
-          <label for="e-cognitive">Cognitivo conductual</label>
-          <input type="checkbox" id="e-dinamic" name="dinamica">
-          <label for="e-dinamic">Psicodinámica</label>
-          <input type="checkbox" id="e-sistemic" name="sistemica">
-          <label for="e-sistemic">Sistémica</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="identification">Identificación / Número de colegiado</label>
-        <input type="text" name="identification" id="identification" class="form-control" value="<%= user.identification %>">
-      </div>
-      <div class="form-group">
-        <label for="description">Descripción</label>
-        <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
-      </div>
-      <div class="form-group">
-        <label for="website">Website</label>
-        <input type="text" name="website" id="website" class="form-control" value="<%= user.website %>">
-      </div>
-      <div class="form-group">
-        <label>Psicólogos asociados</label>
-        <a href="/psychologists">Actualizar</a>
-      </div>
-      <input type="hidden" name="role" value="<%= user.role %>">
-      <button class="btn btn-primary">Guardar</button>
-    </form>
-    <form action="/delete-profile" method="post">
-      <button class="btn btn-primary">Eliminar</button>
-    </form>
-  </div>
-  <!--  end clinics form -->
-
-  <% } else if (user.role === "psychologist") { %>
-    <div class="form-holder">
-      <h2 class="text-center">Área privada psicólogo</h2>
-      <form action="/edit-profile" class="form-edit" method="post">
-        <div class="form-group">
-          <label for="username-input">Username</label>
-          <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
-        </div>
-        <div class="form-group">
-          <label for="name-input">Name</label>
-          <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
-        </div>
-        <div class="form-group">
-          <label for="email-input">Email</label>
-          <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="number" name="phone" id="phone" class="form-control" value="<%= user.phone %>">
-        </div>
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
-        </div>
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
-        </div>
-        <div class="form-group">
-          <label for="photo">Photo</label>
-          <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
-        </div>
-        <label>Especialidad</label>
-        <div class="checkbox-group">
-          <input type="checkbox" id="e-clinic" name="clinica">
-          <label for="e-clinic">Clínicas</label>
-          <input type="checkbox" id="e-couple" name="pareja">
-          <label for="e-couple">Pareja</label>
-          <input type="checkbox" id="e-educational" name="educativa">
-          <label for="e-educational">Educativa</label>
-        </div>
-
-        <label>Tipología de pacientes</label>
-        <div class="checkbox-group">
-          <input type="checkbox" id="e-children" name="niños">
-          <label for="e-children">Niños</label>
-          <input type="checkbox" id="e-teenager" name="adolescentes">
-          <label for="e-teenager">Adolescentes</label>
-          <input type="checkbox" id="e-adults" name="adultos">
-          <label for="e-adults">Adultos</label>
-        </div>
-        <div class="form-group">
-          <label>Orientación</label>
-          <div class="checkbox-group">
-            <input type="checkbox" id="e-cognitive" name="cognitivo">
-            <label for="e-cognitive">Cognitivo conductual</label>
-            <input type="checkbox" id="e-dinamic" name="dinamica">
-            <label for="e-dinamic">Psicodinámica</label>
-            <input type="checkbox" id="e-sistemic" name="sistemica">
-            <label for="e-sistemic">Sistémica</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="identification">Identificación / Número de colegiado</label>
-          <input type="text" name="identification" id="identification" class="form-control" value="<%= user.identification %>">
-        </div>
-        <div class="form-group">
-          <label for="description">Descripción</label>
-          <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
-        </div>
-        <div class="form-group">
-          <label for="website">Website</label>
-          <input type="text" name="website" id="website" class="form-control" value="<%= user.website %>">
-        </div>
-        <input type="hidden" name="role" value="<%= user.role %>">
-        <button class="btn btn-primary">Guardar</button>
-      </form>
-      <form action="/delete-profile" method="post">
-        <button class="btn btn-primary">Eliminar</button>
-      </form>
-    </div>
-    <!--  end psychologist form -->
-    <% } else if (user.role === "patient"){ %>
-
-      <div class="form-holder">
-        <h2 class="text-center">Área privada de pacientes</h2>
         <form action="/edit-profile" class="form-edit" method="post">
+          <h2 class="text-center">Área privada clínica</h2>
           <div class="form-group">
             <label for="username-input">Username</label>
             <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
@@ -185,6 +18,10 @@
             <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
           </div>
           <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="number" name="phone" id="phone" class="form-control">
+          </div>
+          <div class="form-group">
             <label for="city">City</label>
             <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
           </div>
@@ -193,23 +30,199 @@
             <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
           </div>
           <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" name="phone" id="phone" class="form-control" value="<%= user.phone %>">
-          </div>
-          <div class="form-group">
             <label for="photo">Photo</label>
             <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
+          </div>
+          <label>Especialidad</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="e-clinic" name="clinica">
+            <label for="e-clinic">Clínicas</label>
+            <input type="checkbox" id="e-couple" name="pareja">
+            <label for="e-couple">Pareja</label>
+            <input type="checkbox" id="e-educational" name="educativa">
+            <label for="e-educational">Educativa</label>
+          </div>
+
+          <label>Tipología de pacientes</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="e-children" name="niños">
+            <label for="e-children">Niños</label>
+            <input type="checkbox" id="e-teenager" name="adolescentes">
+            <label for="e-teenager">Adolescentes</label>
+            <input type="checkbox" id="e-adults" name="adultos">
+            <label for="e-adults">Adultos</label>
+          </div>
+          <div class="form-group">
+            <label>Orientación</label>
+            <div class="checkbox-group">
+              <input type="checkbox" id="e-cognitive" name="cognitivo">
+              <label for="e-cognitive">Cognitivo conductual</label>
+              <input type="checkbox" id="e-dinamic" name="dinamica">
+              <label for="e-dinamic">Psicodinámica</label>
+              <input type="checkbox" id="e-sistemic" name="sistemica">
+              <label for="e-sistemic">Sistémica</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="identification">Identificación / Número de colegiado</label>
+            <input type="text" name="identification" id="identification" class="form-control" value="<%= user.identification %>">
           </div>
           <div class="form-group">
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
           </div>
+          <div class="form-group">
+            <label for="website">Website</label>
+            <input type="text" name="website" id="website" class="form-control" value="<%= user.website %>">
+          </div>
+          <div class="form-group">
+            <label>Psicólogos asociados</label>
+            <a href="/psychologists" class="update-link">Actualizar</a>
+          </div>
           <input type="hidden" name="role" value="<%= user.role %>">
           <button class="btn btn-primary">Guardar</button>
         </form>
-        <form action="/delete-profile" method="post">
+        <form action="/delete-profile" method="post" class="form-delete">
           <button class="btn btn-primary">Eliminar</button>
         </form>
+      </div>
+    </div>
+  </div>
+  <!--  end clinics form -->
+
+  <% } else if (user.role === "psychologist") { %>
+    <div class="form-holder container">
+      <div class="form-content">
+        <div class="form-holder-inner">
+          <form action="/edit-profile" class="form-edit" method="post">
+            <h2 class="text-center">Área privada psicólogo</h2>
+            <div class="form-group">
+              <label for="username-input">Username</label>
+              <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
+            </div>
+            <div class="form-group">
+              <label for="name-input">Name</label>
+              <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
+            </div>
+            <div class="form-group">
+              <label for="email-input">Email</label>
+              <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="number" name="phone" id="phone" class="form-control" value="<%= user.phone %>">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
+            </div>
+            <div class="form-group">
+              <label for="photo">Photo</label>
+              <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
+            </div>
+            <label>Especialidad</label>
+            <div class="checkbox-group">
+              <input type="checkbox" id="e-clinic" name="clinica">
+              <label for="e-clinic">Clínicas</label>
+              <input type="checkbox" id="e-couple" name="pareja">
+              <label for="e-couple">Pareja</label>
+              <input type="checkbox" id="e-educational" name="educativa">
+              <label for="e-educational">Educativa</label>
+            </div>
+
+            <label>Tipología de pacientes</label>
+            <div class="checkbox-group">
+              <input type="checkbox" id="e-children" name="niños">
+              <label for="e-children">Niños</label>
+              <input type="checkbox" id="e-teenager" name="adolescentes">
+              <label for="e-teenager">Adolescentes</label>
+              <input type="checkbox" id="e-adults" name="adultos">
+              <label for="e-adults">Adultos</label>
+            </div>
+            <div class="form-group">
+              <label>Orientación</label>
+              <div class="checkbox-group">
+                <input type="checkbox" id="e-cognitive" name="cognitivo">
+                <label for="e-cognitive">Cognitivo conductual</label>
+                <input type="checkbox" id="e-dinamic" name="dinamica">
+                <label for="e-dinamic">Psicodinámica</label>
+                <input type="checkbox" id="e-sistemic" name="sistemica">
+                <label for="e-sistemic">Sistémica</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="identification">Identificación / Número de colegiado</label>
+              <input type="text" name="identification" id="identification" class="form-control" value="<%= user.identification %>">
+            </div>
+            <div class="form-group">
+              <label for="description">Descripción</label>
+              <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
+            </div>
+            <div class="form-group">
+              <label for="website">Website</label>
+              <input type="text" name="website" id="website" class="form-control" value="<%= user.website %>">
+            </div>
+            <input type="hidden" name="role" value="<%= user.role %>">
+            <button class="btn btn-primary">Guardar</button>
+          </form>
+          <form action="/delete-profile" method="post" class="form-delete">
+            <button class="btn btn-primary">Eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--  end psychologist form -->
+    <% } else if (user.role === "patient"){ %>
+
+      <div class="form-holder container">
+        <div class="form-content">
+          <div class="form-holder-inner">
+            <form action="/edit-profile" class="form-edit" method="post">
+              <h2 class="text-center">Área privada de pacientes</h2>
+              <div class="form-group">
+                <label for="username-input">Username</label>
+                <input type="text" name="username" id="username-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.username %>">
+              </div>
+              <div class="form-group">
+                <label for="name-input">Name</label>
+                <input type="text" name="name" id="name-input" placeholder="e.g., Diana Prince" class="form-control" value="<%= user.name %>">
+              </div>
+              <div class="form-group">
+                <label for="email-input">Email</label>
+                <input type="email" name="email" id="email-input" placeholder="e.g., diana@themyscira.agency" class="form-control" value="<%= user.email %>">
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" class="form-control" value="<%= user.address %>">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone" class="form-control" value="<%= user.phone %>">
+              </div>
+              <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="text" name="photo" id="photo" class="form-control" value="<%= user.photo %>">
+              </div>
+              <div class="form-group">
+                <label for="description">Descripción</label>
+                <input type="text" name="description" id="description" class="form-control" value="<%= user.description %>">
+              </div>
+              <input type="hidden" name="role" value="<%= user.role %>">
+              <button class="btn btn-primary">Guardar</button>
+            </form>
+            <form action="/delete-profile" method="post" class="form-delete">
+              <button class="btn btn-primary">Eliminar</button>
+            </form>
+          </div>
+        </div>
       </div>
       <!--  end patient form -->
       <% } %>
