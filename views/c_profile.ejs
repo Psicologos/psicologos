@@ -14,14 +14,44 @@ para que pinte su perfil-->
 
 </div>
 
+
+<p>PSICOLOGOS ASOCIADOS A ESTA CLINICA</p>
+<div class="">
+<ul>
+  <% for (i=0; i<clinic.psychologist.length; i++){ %>
+    <li>
+      <%= clinic.psychologist[i].photo %>
+      <%= clinic.psychologist[i].name %>
+      <%= clinic.psychologist[i].phone %>
+      <%= clinic.psychologist[i].email %>
+    </li>
+    <%  } %>
+</ul>
+
+</div>
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
 
-<% if (user.role==="patient"){ %>
+<% if (user.role==="patient" || user.role==="admin"){ %>
 <form action="/c_profile?id=<%= user._id %>" method="POST">
   <p><label for="comment">Comentarios</label></p>
   <textarea name="description" id="comment"></textarea>
-  <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
+  <input type="hidden" id="receptor" name="idUser" value="<%= clinic._id %>">
   <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
   <p><button type="submit">Enviar Comentario</button></p>
 </form>
 <% } %>
+
+<!--  Muestra los comentarios asociados a cada psicologo -->
+
+    <p>COMENTARIOS</p>
+          <ul>
+            <% clinicComments.forEach(comment => { %>
+              <li>
+                <%= comment.comment %>
+              </li>
+              <li>
+                <%= comment.author_id.name %>
+              </li>
+              <%  }) %>
+          </ul>
+          </div>

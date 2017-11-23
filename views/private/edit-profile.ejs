@@ -32,31 +32,76 @@
       </div>
       <label>Especialidad</label>
       <div class="checkbox-group">
+        <% if(user.target.indexOf('clínica') !== -1) {%>
+        <input type="checkbox" id="e-clinic" name="clinica" checked>
+        <%} else {%>
         <input type="checkbox" id="e-clinic" name="clinica">
+        <%}%>
+
         <label for="e-clinic">Clínicas</label>
+
+        <% if(user.target.indexOf('pareja') !== -1) {%>
+        <input type="checkbox" id="e-couple" name="pareja" checked>
+        <%} else {%>
         <input type="checkbox" id="e-couple" name="pareja">
+        <%}%>
         <label for="e-couple">Pareja</label>
+        <% if(user.target.indexOf('educativa') !== -1) {%>
+        <input type="checkbox" id="e-educational" name="educativa" checked>
+        <%} else {%>
         <input type="checkbox" id="e-educational" name="educativa">
+        <%}%>
         <label for="e-educational">Educativa</label>
+
       </div>
 
       <label>Tipología de pacientes</label>
       <div class="checkbox-group">
-        <input type="checkbox" id="e-children" name="niños">
+        <% if(user.target.indexOf('niños') !== -1) {%>
+        <input type="checkbox" id="e-children" name="ninos" checked>
+        <%} else {%>
+        <input type="checkbox" id="e-children" name="ninos">
+        <%}%>
+
         <label for="e-children">Niños</label>
+
+      <% if(user.target.indexOf('adolescentes') !== -1) {%>
+        <input type="checkbox" id="e-teenager" name="adolescentes" checked>
+        <%} else {%>
         <input type="checkbox" id="e-teenager" name="adolescentes">
+        <%}%>
         <label for="e-teenager">Adolescentes</label>
+
+        <% if(user.target.indexOf('adultos') !== -1) {%>
+        <input type="checkbox" id="e-adults" name="adultos" checked>
+        <%} else {%>
         <input type="checkbox" id="e-adults" name="adultos">
+        <%}%>
+
         <label for="e-adults">Adultos</label>
       </div>
       <div class="form-group">
         <label>Orientación</label>
         <div class="checkbox-group">
+          <% if(user.target.indexOf('cognitivo') !== -1) {%>
+          <input type="checkbox" id="e-cognitive" name="cognitivo" checked>
+          <%} else {%>
           <input type="checkbox" id="e-cognitive" name="cognitivo">
+          <%}%>
           <label for="e-cognitive">Cognitivo conductual</label>
+
+          <% if(user.target.indexOf('dinamica') !== -1) {%>
+          <input type="checkbox" id="e-dinamic" name="dinamica" checked>
+          <%} else {%>
           <input type="checkbox" id="e-dinamic" name="dinamica">
+          <%}%>
           <label for="e-dinamic">Psicodinámica</label>
+
+          <% if(user.target.indexOf('sistemica') !== -1) {%>
+          <input type="checkbox" id="e-sistemic" name="sistemica" checked>
+          <%} else {%>
           <input type="checkbox" id="e-sistemic" name="sistemica">
+          <%}%>
           <label for="e-sistemic">Sistémica</label>
         </div>
       </div>
@@ -115,31 +160,75 @@
         </div>
         <label>Especialidad</label>
         <div class="checkbox-group">
+          <% if(user.speciality.indexOf('clinica') !== -1) {%>
+          <input type="checkbox" id="e-clinic" name="clinica" checked>
+          <%} else {%>
           <input type="checkbox" id="e-clinic" name="clinica">
+          <%}%>
           <label for="e-clinic">Clínicas</label>
+
+          <% if(user.speciality.indexOf('pareja') !== -1) {%>
+          <input type="checkbox" id="e-couple" name="pareja" checked>
+          <%} else {%>
           <input type="checkbox" id="e-couple" name="pareja">
-          <label for="e-couple">Pareja</label>
+          <%}%>
+          <label for="e-couple">Parejas</label>
+          <% if(user.speciality.indexOf('educativa') !== -1) {%>
+          <input type="checkbox" id="e-educational" name="educativa" checked>
+          <%} else {%>
           <input type="checkbox" id="e-educational" name="educativa">
+          <%}%>
           <label for="e-educational">Educativa</label>
+
         </div>
 
         <label>Tipología de pacientes</label>
         <div class="checkbox-group">
-          <input type="checkbox" id="e-children" name="niños">
+          <% if(user.target.indexOf('niños') !== -1) {%>
+          <input type="checkbox" id="e-children" name="ninos" checked>
+          <%} else {%>
+          <input type="checkbox" id="e-children" name="ninos">
+          <%}%>
+
           <label for="e-children">Niños</label>
+
+        <% if(user.target.indexOf('adolescentes') !== -1) {%>
+          <input type="checkbox" id="e-teenager" name="adolescentes" checked>
+          <%} else {%>
           <input type="checkbox" id="e-teenager" name="adolescentes">
+          <%}%>
           <label for="e-teenager">Adolescentes</label>
+
+          <% if(user.target.indexOf('adultos') !== -1) {%>
+          <input type="checkbox" id="e-adults" name="adultos" checked>
+          <%} else {%>
           <input type="checkbox" id="e-adults" name="adultos">
+          <%}%>
+
           <label for="e-adults">Adultos</label>
         </div>
         <div class="form-group">
           <label>Orientación</label>
           <div class="checkbox-group">
+            <% if(user.orientation.indexOf('cognitivo') !== -1) {%>
+            <input type="checkbox" id="e-cognitive" name="cognitivo" checked>
+            <%} else {%>
             <input type="checkbox" id="e-cognitive" name="cognitivo">
+            <%}%>
             <label for="e-cognitive">Cognitivo conductual</label>
+
+            <% if(user.orientation.indexOf('dinamica') !== -1) {%>
+            <input type="checkbox" id="e-dinamic" name="dinamica" checked>
+            <%} else {%>
             <input type="checkbox" id="e-dinamic" name="dinamica">
+            <%}%>
             <label for="e-dinamic">Psicodinámica</label>
+
+            <% if(user.orientation.indexOf('sistemica') !== -1) {%>
+            <input type="checkbox" id="e-sistemic" name="sistemica" checked>
+            <%} else {%>
             <input type="checkbox" id="e-sistemic" name="sistemica">
+            <%}%>
             <label for="e-sistemic">Sistémica</label>
           </div>
         </div>

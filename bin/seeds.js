@@ -69,6 +69,7 @@ const users = [{
     identification: 'ad000202020224',
     rate: 30,
     role: 'clinic',
+    psychologist:[]
   },
   {
     username: 'antonio',

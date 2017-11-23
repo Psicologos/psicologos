@@ -54,8 +54,6 @@ profileRoutes.get('/edit-profile', ensureLoggedIn(), (req, res, next) => {
 
 profileRoutes.post('/edit-profile', (req, res, next) => {
   let id = req.user._id;
-  console.log('speciality =======>', req.body);
-
   const {
     username,
     name,
@@ -68,6 +66,15 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
     identification,
     description,
     website,
+    clinica,
+    pareja,
+    educativa,
+    ninos,
+    adolescentes,
+    adultos,
+    cognitivo,
+    dinamica,
+    sistemica
   } = req.body;
 
   const updates = {
@@ -81,7 +88,7 @@ profileRoutes.post('/edit-profile', (req, res, next) => {
   if (clinica) updates.speciality.push("clinica");
   if (pareja) updates.speciality.push("pareja");
   if (educativa) updates.speciality.push("educativa");
-  if (niños) updates.target.push("niños");
+  if (ninos) updates.target.push("niños");
   if (adolescentes) updates.target.push("adolescentes");
   if (adultos) updates.target.push("adultos");
   if (cognitivo) updates.orientation.push("cognitivo");
@@ -117,7 +124,7 @@ profileRoutes.post('/psychologists', ensureLoggedIn(), (req, res, next) => {
     _id: req.user._id
   }, {
     $push: {
-      "associate_psychologist": req.body.id
+      "psychologist": req.body.id
     }
   }, (error, user) => {
     res.render('private/edit-profile');

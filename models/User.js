@@ -37,14 +37,14 @@ const userSchema = new Schema({
   rate: Number, //nº colegiado / registro sanitario
   //tarifa / hora
   website: String,
-  associate_psychologist: {
+  psychologist: [{
     type: Schema.Types.ObjectId,
     ref: "User"
-  }, //psicologos asociados a una clinica
-  associate_clinics: {
+  }], //psicologos asociados a una clinica
+  associate_clinics: [{
     type: Schema.Types.ObjectId,
     ref: "User"
-  },
+  }],
   role: {
     type: String,
     enum: ['admin', 'psychologist', 'clinic', 'patient']

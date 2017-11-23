@@ -3,7 +3,6 @@
 <!--  Hay que pasarle como parametro users a un único psicologo
 para que pinte su perfil-->
 <div class="">
-
   <p>
     <%= psychologist.name %>
   </p>
@@ -13,6 +12,7 @@ para que pinte su perfil-->
   <p>
     <%= psychologist.identification %>
   </p>
+
   <p>
     <%= psychologist.email%>
   </p>
@@ -24,16 +24,57 @@ para que pinte su perfil-->
     <%= psychologist.detail%>
   </p>
 
+  <p> ORIENTACIÓN </p>
+<ul>
+  <% psychologist.orientation.forEach(orientation => { %>
+    <li>
+      <%= orientation %>
+    </li>
+    <%  }) %>
+</ul>
+
+<p> TIPOLOGIA DE PACIENTES </p>
+<ul>
+  <% psychologist.target.forEach(target => { %>
+    <li>
+      <%= target %>
+    </li>
+    <%  }) %>
+</ul>
+
+<p> ESPECIALIDADES </p>
+<ul>
+  <% psychologist.speciality.forEach(speciality => { %>
+    <li>
+      <%= speciality %>
+    </li>
+    <%  }) %>
+</ul>
 </div>
 
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
 
-<% if (user.role==="patient"){ %>
-<form action="/p_profile?id=<%= user._id %>" method="POST">
-  <p><label for="comment">Comentarios</label></p>
-  <textarea name="description" id="comment"></textarea>
-  <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
-  <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
-  <p><button type="submit">Enviar Comentario</button></p>
-</form>
-<% } %>
+<% if (user.role==="patient" || user.role==="admin" ){ %>
+  <form action="/p_profile?id=<%= user._id %>" method="POST">
+    <p><label for="comment">Comentarios</label></p>
+    <textarea name="description" id="comment"></textarea>
+    <input type="hidden" id="receptor" name="idUser" value="<%= psychologist._id %>">
+    <input type="hidden" id="creador" name="idUserLogged" value="<%= user._id %>">
+    <p><button type="submit">Enviar Comentario</button></p>
+  </form>
+  <% } %>
+
+<!--  Muestra los comentarios asociados a cada psicologo -->
+
+    <p>COMENTARIOS</p>
+          <ul>
+            <% psychologistComments.forEach(comment => { %>
+              <li>
+                <%= comment.comment %>
+              </li>
+              <li>
+                <%= comment.author_id.name %>
+              </li>
+              <%  }) %>
+          </ul>
+          </div>
