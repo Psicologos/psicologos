@@ -1,23 +1,32 @@
-<div class="form-holder">
-  <h2 class="text-center">Área privada de administración</h2>
-  <ul>
+<div class="container main-content">
+  <h2 class="text-center mb4">Área privada de administración</h2>
+  <ul class="tickets-list">
     <% users.forEach((e) => { %>
-      <li class="users">
-        <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
-        <h3>
-        <%= e.name %>
-      </h3>
-        <p>
-          <%= e.address %>
-        </p>
-        <p>
-          <%= e.city %>
-        </p>
-        <a href="/p_profile?id=<%= e._id %>">Pefil</a>
-        <form action="/edit-admin" method="post">
-          <input type="hidden" name="id" value="<%= e._id %>">
-          <button class="btn btn-success">Validar</button>
-        </form>
+      <li class="tickets-holder">
+        <div class="tickets tickets-flex">
+          <div>
+            <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="" class="rounded">
+          </div>
+          <div class="tickets-content">
+            <h3 class="mb1">
+            <%= e.name %>
+          </h3>
+            <p class="mb1">
+              <%= e.city %>
+            </p>
+            <p class="mb1">
+              nº id:
+              <%= e.identification %>
+
+            </p>
+            <a href="/p_profile?id=<%= e._id %>" class="mb1">Pefil</a>
+            <form action="/edit-admin" method="post" class="text-right">
+              <input type="hidden" name="id" value="<%= e._id %>">
+              <button class="btn btn-primary text-right">Validar</button>
+            </form>
+          </div>
+        </div>
+
       </li>
       <%})%>
   </ul>
