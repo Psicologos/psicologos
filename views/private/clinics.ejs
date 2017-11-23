@@ -18,7 +18,7 @@
               <p class="mb1">
                 <%= e.city %>
               </p>
-              <a href="/c_profile?id=<%= e._id %>" class="mb1">Pefil</a>
+              <a href="/c_profile/<%= e._id %>" class="mb1">Pefil</a>
               <form action="/psychologists" method="post" class="text-right">
                 <input type="hidden" name="id" value="<%= e._id %>">
               </form>

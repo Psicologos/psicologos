@@ -1,80 +1,113 @@
-<p>PERFIL INDIVIDUAL DEL PSICOLOGO</p>
+<div class="container main-content">
+  <h2 class="text-center">
+      <%= psychologist.name %>
+  </h2>
+  <div class="tickets-list">
+    <div class="tickets-holder">
+      <div class="tickets">
+        <div class="text-center">
+          <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="" class="rounded mb2">
+        </div>
+        <div class="tickets-content">
+          <p>
+            Precio:
+            <%= psychologist.rate %> €/hora</p>
+          <p>
+            <p>
+              Teléfono:
+              <%= psychologist.phone %>
+            </p>
+            <p>
+              nº id:
+              <%= psychologist.identification %>
+            </p>
+            <p>
+              <%= psychologist.email%>
+            </p>
+            <p>
+              Especialidad:
+              <%= psychologist.specility%>
+            </p>
+            <p>
+              Orientación:
+              <%= psychologist.orientation%>
+            </p>
+            <p>
+              Tipología de paciente:
+              <%= psychologist.target%>
+            </p>
+            <p>
+              <%= psychologist.address%> -
+                <%= psychologist.city%>
+            </p>
+            <p>
+              <%= psychologist.detail%>
+            </p>
+            <p>
+              Psicólogos asociados:
+            </p>
+            <p>Orientación</p>
+            <ul>
+              <% psychologist.orientation.forEach(orientation => { %>
+                <li>
+                  <%= orientation %>
+                </li>
+                <%  }) %>
+            </ul>
+            <p>Tipología de paciente</p>
+            <ul>
+              <% psychologist.target.forEach(target => { %>
+                <li>
+                  <%= target %>
+                </li>
+                <%  }) %>
+            </ul>
+            <p>Especialidades</p>
+            <ul>
+              <% psychologist.speciality.forEach(speciality => { %>
+                <li>
+                  <%= speciality %>
+                </li>
+                <%  }) %>
+            </ul>
+            <a href="#">
+              <%= psychologist.website%>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!--  Hay que pasarle como parametro users a un único psicologo
-para que pinte su perfil-->
-<div class="">
-  <p>
-    <%= psychologist.name %>
-  </p>
-  <p>
-    <%= psychologist.role %> -
-      <%= psychologist.rate %> €/hora</p>
-  <p>
-    <%= psychologist.identification %>
-  </p>
+  <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
+  <div class="comments">
 
-  <p>
-    <%= psychologist.email%>
-  </p>
-  <p>
-    <%= psychologist.address%> -
-      <%= psychologist.city%>
-  </p>
-  <p>
-    <%= psychologist.detail%>
-  </p>
+    <ul class="mb4">
+      <h3 class="mb2">Comentarios</h3>
+      <% psychologistComments.forEach(comment => { %>
 
-  <p> ORIENTACIÓN </p>
-<ul>
-  <% psychologist.orientation.forEach(orientation => { %>
-    <li>
-      <%= orientation %>
-    </li>
-    <%  }) %>
-</ul>
+        <li class="comment mb2">
+          <p class="mb1">
+            <%= comment.comment %>
+          </p>
 
-<p> TIPOLOGIA DE PACIENTES </p>
-<ul>
-  <% psychologist.target.forEach(target => { %>
-    <li>
-      <%= target %>
-    </li>
-    <%  }) %>
-</ul>
+          <p class="mb2">
+            <%= comment.author_id.name %>
+          </p>
+        </li>
+        <%  }) %>
+    </ul>
+    <% if (user.role==="patient" || user.role==="admin" ){ %>
+      <h3 class="mb2">Deja tu comentario</h3>
+      <form action="/p_profile?id=<%= user._id %>" method="POST">
 
-<p> ESPECIALIDADES </p>
-<ul>
-  <% psychologist.speciality.forEach(speciality => { %>
-    <li>
-      <%= speciality %>
-    </li>
-    <%  }) %>
-</ul>
+        <textarea name="description" id="comment" autofocus class="form-control mb4"></textarea>
+
+        <input type="hidden" id="receptor" name="idUser" value="<%= psychologist._id %>">
+        <input type="hidden" id="creador" name="idUserLogged" value="<%= user._id %>">
+        <button class="btn btn-primary btn-lg" type="submit">Enviar Comentario</button>
+      </form>
+      <% } %>
+  </div>
+
+  <!--  Muestra los comentarios asociados a cada psicologo -->
 </div>
-
-<!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
-
-<% if (user.role==="patient" || user.role==="admin" ){ %>
-  <form action="/p_profile?id=<%= user._id %>" method="POST">
-    <p><label for="comment">Comentarios</label></p>
-    <textarea name="description" id="comment"></textarea>
-    <input type="hidden" id="receptor" name="idUser" value="<%= psychologist._id %>">
-    <input type="hidden" id="creador" name="idUserLogged" value="<%= user._id %>">
-    <p><button type="submit">Enviar Comentario</button></p>
-  </form>
-  <% } %>
-
-<!--  Muestra los comentarios asociados a cada psicologo -->
-
-    <p>COMENTARIOS</p>
-          <ul>
-            <% psychologistComments.forEach(comment => { %>
-              <li>
-                <%= comment.comment %>
-              </li>
-              <li>
-                <%= comment.author_id.name %>
-              </li>
-              <%  }) %>
-          </ul>
-          </div>

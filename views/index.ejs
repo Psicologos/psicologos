@@ -40,10 +40,10 @@
             <p>
               <%= psychologist.address %>
             </p>
-            <p>
+            <p class="mb1">
               <%= psychologist.city %>
             </p>
-            <a href="/p_profile/<%= psychologist._id %>">View Profile</a>
+            <a href="/p_profile/<%= psychologist._id %>" class="btn btn-primary">View Profile</a>
           </li>
           <% }}); %>
 
@@ -57,15 +57,15 @@
       <% users.forEach((clinic) => { %>
         <% if(clinic.role === "clinic") {%>
           <li class="user-home col-sm-6 col-md-3">
-            <img src="http://www.siquia.com/wp-content/uploads/2015/07/colores-despacho-psicologo.jpg" alt="" class="mb2">
+            <img src="http://www.siquia.com/wp-content/uploads/2015/07/colores-despacho-psicologo.jpg" alt="" class="mb1">
             <h3><%= clinic.name %></h3>
             <p>
               <%= clinic.address %>
             </p>
-            <p>
+            <p class="mb1">
               <%= clinic.city %>
             </p>
-            <a href="/c_profile/<%= clinic._id %>">View Profile</a>
+            <a href="/c_profile/<%= clinic._id %>" class="btn btn-primary btn-lg">View Profile</a>
           </li>
           <% }}); %>
   </div>

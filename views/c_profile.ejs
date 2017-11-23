@@ -3,7 +3,7 @@
       <%= clinic.name %>
   </h2>
   <div class="tickets-list">
-    <div class="tickets-holder block-centered">
+    <div class="tickets-holder">
       <div class="tickets">
         <div class="text-center">
           <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="" class="rounded mb2">
@@ -42,9 +42,6 @@
           <p>
             <%= clinic.detail%>
           </p>
-          <p>
-            Psicólogos asociados:
-          </p>
           <a href="#">
             <%= clinic.website%>
           </a>
@@ -52,34 +49,61 @@
       </div>
     </div>
   </div>
-  <% if (user.role==="patient"){ %>
-    <form action="/c_profile?id=<%= user._id %>" method="POST">
-      <h3 class="mb2">Comentarios</h3>
-      <div class="paper">
-        <div class="paper-content">
-          <textarea autofocus name="description" id="comment" class="mb2">Hello world !&#10;Here's a paper textarea tag.</textarea>
-        </div>
-      </div>
-      <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
-      <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
-      <button type="submit" class="btn btn-primary btn-lg">Enviar Comentario</button>
-    </form>
-    <% } %>
-</div>
+  <div>
+    <ul class="tickets-list">
+      <% for (i=0; i<clinic.psychologist.length; i++) { %>
+        <li class="tickets-holder">
+          <div class="tickets tickets-flex">
+            <div>
+              <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
+            </div>
+            <div class="tickets-content">
+              <p>
+                <%= clinic.psychologist[i].photo %>
+              </p>
+              <h3 class="mb1">
+                <%= clinic.psychologist[i].name %>
+            </h3>
+              <p class="mb1">
+                <%= clinic.psychologist[i].mail %>
+              </p>
+              <p class="mb1">
+                <%= clinic.psychologist[i].address %>
+              </p>
+              <p class="mb1">
+                <%= clinic.psychologist[i].city %>
+              </p>
+            </div>
+          </div>
+        </li>
+        <%  } %>
+    </ul>
+  </div>
+  <div class="comments">
+    <h3 class="mb2 text-center">Comentarios</h3>
+    <ul class="mb4">
+      <% clinicComments.forEach(comment => { %>
 
+        <li class="comment mb2">
+          <p>
+            <%= comment.comment %>
+          </p>
+          <p>
+            <%= comment.author_id.name %>
+          </p>
+        </li>
+        <%  }) %>
+    </ul>
+    <% if (user.role==="patient"){ %>
+      <form action="/c_profile?id=<%= user._id %>" method="POST">
+        <h3 class="mb2">Añadir comentario</h3>
+        <textarea name="description" id="comment" autofocus class="form-control mb4"></textarea>
 
-<p>PSICOLOGOS ASOCIADOS A ESTA CLINICA</p>
-<div class="">
-<ul>
-  <% for (i=0; i<clinic.psychologist.length; i++){ %>
-    <li>
-      <%= clinic.psychologist[i].photo %>
-      <%= clinic.psychologist[i].name %>
-      <%= clinic.psychologist[i].phone %>
-      <%= clinic.psychologist[i].email %>
-    </li>
-    <%  } %>
-</ul>
-
+        <input type="hidden" id="receptor" name="idUser" value="<%= clinic._id %>">
+        <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
+        <button type="submit" class="btn btn-primary btn-lg">Enviar Comentario</button>
+      </form>
+      <% } %>
+  </div>
 </div>
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->

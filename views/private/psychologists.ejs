@@ -18,7 +18,7 @@
               <p class="mb1">
                 <%= e.city %>
               </p>
-              <a href="/p_profile?id=<%= e._id %>">Pefil</a>
+              <a href="/p_profile/<%= e._id %>">Pefil</a>
               <% if(user.role === "clinic"){ %>
                 <form action="/psychologists" method="post">
                   <input type="hidden" name="id" value="<%= e._id %>">
