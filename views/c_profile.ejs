@@ -83,31 +83,3 @@
 
 </div>
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
-<<<<<<< HEAD
-
-<% if (user.role==="patient" || user.role==="admin"){ %>
-<form action="/c_profile?id=<%= user._id %>" method="POST">
-  <p><label for="comment">Comentarios</label></p>
-  <textarea name="description" id="comment"></textarea>
-  <input type="hidden" id="receptor" name="idUser" value="<%= clinic._id %>">
-  <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
-  <p><button type="submit">Enviar Comentario</button></p>
-</form>
-<% } %>
-
-<!--  Muestra los comentarios asociados a cada psicologo -->
-
-    <p>COMENTARIOS</p>
-          <ul>
-            <% clinicComments.forEach(comment => { %>
-              <li>
-                <%= comment.comment %>
-              </li>
-              <li>
-                <%= comment.author_id.name %>
-              </li>
-              <%  }) %>
-          </ul>
-          </div>
-=======
->>>>>>> 02a6314839c1ce4e8394fdd34a0629a50f32a7e9
