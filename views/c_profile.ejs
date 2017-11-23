@@ -52,19 +52,19 @@
       </div>
     </div>
   </div>
-
-  <form action="/c_profile?id=<%= user._id %>" method="POST">
-    <h3 class="mb2">Comentarios</h3>
-    <div class="paper">
-      <div class="paper-content">
-        <textarea autofocus name="description" id="comment" class="mb2">Hello world !&#10;Here's a paper textarea tag.</textarea>
+  <% if (user.role==="patient"){ %>
+    <form action="/c_profile?id=<%= user._id %>" method="POST">
+      <h3 class="mb2">Comentarios</h3>
+      <div class="paper">
+        <div class="paper-content">
+          <textarea autofocus name="description" id="comment" class="mb2">Hello world !&#10;Here's a paper textarea tag.</textarea>
+        </div>
       </div>
-    </div>
-    <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
-    <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
-    <button type="submit" class="btn btn-primary btn-lg">Enviar Comentario</button>
-  </form>
-
+      <input type="hidden" id="receptor" name="idUser" value="<%= user._id %>">
+      <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
+      <button type="submit" class="btn btn-primary btn-lg">Enviar Comentario</button>
+    </form>
+    <% } %>
 </div>
 
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->
