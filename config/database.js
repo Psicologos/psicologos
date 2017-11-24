@@ -1,6 +1,6 @@
 const path = require('path');
 const mongoose = require('mongoose');
-const dbURL = process.env.DBURL;
+const dbURL = process.env.MONGO_URL;
 
 mongoose.connect(dbURL)
   .then(() => console.log(`Connected to ${dbURL}`))
