@@ -1,4 +1,6 @@
 .DS_Store
+#Dotenv
+.env
 # Logs
 logs
 *.log
@@ -29,6 +31,3 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
-
-#Dotenv
-.env
