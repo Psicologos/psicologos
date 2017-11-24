@@ -116,7 +116,7 @@ profileRoutes.post('/delete-profile', ensureLoggedIn(), (req, res, next) => {
   });
 });
 
-profileRoutes.get('/psychologists', (req, res, next) => {
+profileRoutes.get('/psychologists', ensureLoggedIn(), (req, res, next) => {
   console.log(req.user);
   User.find({
     role: "psychologist"
