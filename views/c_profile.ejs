@@ -80,30 +80,32 @@
     </ul>
   </div>
   <div class="comments">
-    <h3 class="mb2 text-center">Comentarios</h3>
-    <ul class="mb4">
-      <% clinicComments.forEach(comment => { %>
+    <% if(Object.keys(clinicComments).length !== 0) {%>
+      <h3 class="mb2 text-center">Comentarios</h3>
+      <ul class="mb4">
+        <% clinicComments.forEach(comment => { %>
 
-        <li class="comment mb2">
-          <p>
-            <%= comment.comment %>
-          </p>
-          <p>
-            <%= comment.author_id.name %>
-          </p>
-        </li>
-        <%  }) %>
-    </ul>
-    <% if (user.role==="patient"){ %>
-      <form action="/c_profile?id=<%= user._id %>" method="POST">
-        <h3 class="mb2">Añadir comentario</h3>
-        <textarea name="description" id="comment" autofocus class="form-control mb4"></textarea>
+          <li class="comment mb2">
+            <p>
+              <%= comment.comment %>
+            </p>
+            <p>
+              <%= comment.author_id.name %>
+            </p>
+          </li>
+          <%  }) %>
+            <%  } %>
+      </ul>
+      <% if (user.role==="patient"){ %>
+        <form action="/c_profile?id=<%= user._id %>" method="POST">
+          <h3 class="mb2">Añadir comentario</h3>
+          <textarea name="description" id="comment" autofocus class="form-control mb4"></textarea>
 
-        <input type="hidden" id="receptor" name="idUser" value="<%= clinic._id %>">
-        <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
-        <button type="submit" class="btn btn-primary btn-lg">Enviar Comentario</button>
-      </form>
-      <% } %>
+          <input type="hidden" id="receptor" name="idUser" value="<%= clinic._id %>">
+          <input type="hidden" id="creador" name="idUserLogged" value="<%= userLogged %>">
+          <button type="submit" class="btn btn-primary btn-lg">Enviar Comentario</button>
+        </form>
+        <% } %>
   </div>
 </div>
 <!--  Muestra la opción de comentar si eres un usuario que estas logeado-->

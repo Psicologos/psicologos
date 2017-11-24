@@ -82,19 +82,22 @@
   <div class="comments">
 
     <ul class="mb4">
-      <h3 class="mb2">Comentarios</h3>
-      <% psychologistComments.forEach(comment => { %>
+      <% if(Object.keys(psychologistComments).length !== 0) {%>
 
-        <li class="comment mb2">
-          <p class="mb1">
-            <%= comment.comment %>
-          </p>
+        <h3 class="mb2">Comentarios</h3>
+        <% psychologistComments.forEach(comment => { %>
 
-          <p class="mb2">
-            <%= comment.author_id.name %>
-          </p>
-        </li>
-        <%  }) %>
+          <li class="comment mb2">
+            <p class="mb1">
+              <%= comment.comment %>
+            </p>
+
+            <p class="mb2">
+              <%= comment.author_id.name %>
+            </p>
+          </li>
+          <%  }) %>
+            <%  } %>
     </ul>
     <% if (user.role==="patient" || user.role==="admin" ){ %>
       <h3 class="mb2">Deja tu comentario</h3>

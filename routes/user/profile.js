@@ -142,7 +142,7 @@ profileRoutes.post('/psychologists', ensureLoggedIn(), (req, res, next) => {
   });
 });
 
-profileRoutes.get('/clinics', (req, res, next) => {
+profileRoutes.get('/clinics', ensureLoggedIn(), (req, res, next) => {
   User.find({
     role: "clinic"
   }, function(err, users) {

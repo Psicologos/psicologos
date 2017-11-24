@@ -6,7 +6,7 @@
       <li class="tickets-holder tickets-holder-list">
         <a href="/psychologists" class="tickets tickets-flex">
           <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykTjTRRXKlwkTr_Fi8-Me9GyM8d4iekE5llOzOASo6M0p1YQO" alt="">
+            <img src="https://drive.google.com/file/d/0B6_Yj0YZ3FB9ZGpqT3pYTDFUOWs/view" alt="">
           </div>
           <div class="tickets-content">
             <span>Psicólogos</span>
@@ -28,24 +28,27 @@
   <div class="home-list-holder">
     <h2>Psicólogos recomendados</h2>
     <ul class="row home-list">
+      <% var counter = 0 %>
+        <% users.forEach((psychologist) => { %>
+          <% if(psychologist.role === "psychologist") {%>
+            <% if(counter <= 3){ %>
+              <% counter++ %>
 
-      <% users.forEach((psychologist) => { %>
-
-        <% if(psychologist.role === "psychologist") {%>
-          <li class="user-home col-sm-6 col-md-3">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykTjTRRXKlwkTr_Fi8-Me9GyM8d4iekE5llOzOASo6M0p1YQO" alt="" class="mb2">
-            <h3>
+                <li class="user-home col-sm-6 col-md-3">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykTjTRRXKlwkTr_Fi8-Me9GyM8d4iekE5llOzOASo6M0p1YQO" alt="" class="mb2">
+                  <h3>
                   <%= psychologist.name %>
                 </h3>
-            <p>
-              <%= psychologist.address %>
-            </p>
-            <p class="mb1">
-              <%= psychologist.city %>
-            </p>
-            <a href="/p_profile/<%= psychologist._id %>" class="btn btn-primary">View Profile</a>
-          </li>
-          <% }}); %>
+                  <p>
+                    <%= psychologist.address %>
+                  </p>
+                  <p class="mb1">
+                    <%= psychologist.city %>
+                  </p>
+                  <a href="/p_profile/<%= psychologist._id %>" class="btn btn-primary">View Profile</a>
+                </li>
+                <% } %>
+                  <% }}); %>
 
     </ul>
 
@@ -53,20 +56,23 @@
   <div class="home-list-holder">
     <h2>Clínicas de Psicología recomendadas</h2>
     <ul class="row home-list">
-
-      <% users.forEach((clinic) => { %>
-        <% if(clinic.role === "clinic") {%>
-          <li class="user-home col-sm-6 col-md-3">
-            <img src="http://www.siquia.com/wp-content/uploads/2015/07/colores-despacho-psicologo.jpg" alt="" class="mb1">
-            <h3><%= clinic.name %></h3>
-            <p>
-              <%= clinic.address %>
-            </p>
-            <p class="mb1">
-              <%= clinic.city %>
-            </p>
-            <a href="/c_profile/<%= clinic._id %>" class="btn btn-primary btn-lg">View Profile</a>
-          </li>
-          <% }}); %>
+      <% var countera = 0 %>
+        <% users.forEach((clinic) => { %>
+          <% if(clinic.role === "clinic") {%>
+            <% if(countera <= 3){ %>
+              <% countera++ %>
+                <li class="user-home col-sm-6 col-md-3">
+                  <img src="http://www.siquia.com/wp-content/uploads/2015/07/colores-despacho-psicologo.jpg" alt="" class="mb1">
+                  <h3><%= clinic.name %></h3>
+                  <p>
+                    <%= clinic.address %>
+                  </p>
+                  <p class="mb1">
+                    <%= clinic.city %>
+                  </p>
+                  <a href="/c_profile/<%= clinic._id %>" class="btn btn-primary btn-lg">View Profile</a>
+                </li>
+                <% } %>
+                  <% }}); %>
   </div>
 </div>
