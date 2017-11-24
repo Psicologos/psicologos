@@ -1,12 +1,12 @@
-<div class="container main-content profile-detail">
+<div class="container main-content profile-detail clinics">
   <h2 class="text-center">
       <%= clinic.name %>
   </h2>
   <div class="tickets-list">
     <div class="tickets-holder tickets-holder-centered">
       <div class="tickets">
-        <div class="text-center">
-          <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="" class="rounded mb2">
+        <div class="text-center clinic-photo ">
+          <img src="<%= clinic.photo %>" alt="" class="mb2">
         </div>
         <div class="tickets-content">
           <p>
@@ -55,12 +55,10 @@
         <li class="tickets-holder">
           <div class="tickets tickets-flex">
             <div>
-              <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
+              <img src="<%= clinic.psychologist[i].photo %>" alt="" class="mb2">
             </div>
             <div class="tickets-content">
-              <p>
-                <%= clinic.psychologist[i].photo %>
-              </p>
+
               <h3 class="mb1">
                 <%= clinic.psychologist[i].name %>
             </h3>

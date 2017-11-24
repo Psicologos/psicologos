@@ -30,6 +30,10 @@ h2 {
   margin-bottom: 10px;
 }
 
+.mr2 {
+  margin-right: 20px;
+}
+
 .mb2 {
   margin-bottom: 20px;
 }
@@ -186,8 +190,12 @@ h2 {
 }
 
 .user-home img {
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
+}
+
+.user-home-clinic img{
+  height: 200px;
 }
 
 .user-home h3 {
@@ -240,11 +248,14 @@ h2 {
 
 .tickets img{
   width: 96px;
-  margin-right: 20px;
 }
 
 .tickets span {
   padding: 0 20px;
+}
+
+.clinic-photo img{
+  width: 100%;
 }
 
 .tickets-content {
@@ -269,6 +280,13 @@ h2 {
 .professional-list img {
   max-width: 100%;
   height: 200px;
+}
+
+.psychologists .tickets img, .clinics .tickets img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }
 
 /*Edit*/

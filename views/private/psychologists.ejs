@@ -1,4 +1,4 @@
-<div class="container main-content">
+<div class="container main-content psychologists">
   <h2>Psicólogos</h2>
   <ul class="tickets-list">
     <% users.forEach((e) => { %>
@@ -6,7 +6,7 @@
         <li class="tickets-holder tickets-holder-list">
           <div class="tickets tickets-flex">
             <div>
-              <img src="http://comunicaciones.uc.cl/wp-content/uploads/comunicaciones/2014/09/ingrid_bachmann.jpg" alt="">
+              <img src="<%= e.photo %>" alt="" class="mr2">
             </div>
             <div class="tickets-content">
               <h3 class="mb1">
