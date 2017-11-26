@@ -219,12 +219,12 @@ h2 {
   flex-wrap: wrap;
 }
 
-.tickets-list-home {
-  max-width: 800px;
+.tickets-list-centered {
+  justify-content: space-between;
 }
 
-.tickets-list-admon {
-  justify-content: space-between;
+.tickets-list-home {
+  max-width: 800px;
 }
 
 .tickets-holder {
